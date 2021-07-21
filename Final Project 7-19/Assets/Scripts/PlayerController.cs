@@ -8,12 +8,12 @@ public class PlayerController : MonoBehaviour
     public int speed = 5;
     public Rigidbody rb;
     float jumpForce = 6.0f;
-    bool isJumping = false;
     public bool isDead = false;
     public int score = 0;
     public Text scoreText;
     bool isGrounded;
     public float jumpHeight = 250f;
+    public GameObject gameover;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
     void GameOver()
     {
         isDead = true;
+        gameover.active = true;
     }
 
     private void OnTriggerEnter(Collider other)
