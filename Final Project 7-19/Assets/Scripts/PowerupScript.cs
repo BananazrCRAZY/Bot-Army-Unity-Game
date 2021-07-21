@@ -7,7 +7,7 @@ public class PowerupScript : MonoBehaviour
     bool jumpBoost = false;
     bool multiShot = false;
     bool speed = false;
-    bool freezeEnemy = false;
+    bool explosiveAmmo = false;
     bool[] powerUps = new bool[4];
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class PowerupScript : MonoBehaviour
         powerUps[0] = jumpBoost;
         powerUps[1] = multiShot;
         powerUps[2] = speed;
-        powerUps[3] = freezeEnemy;
+        powerUps[3] = explosiveAmmo;
     }
 
     // Update is called once per frame

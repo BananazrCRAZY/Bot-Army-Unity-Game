@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            isDead = true;
+            GameOver();
         }
     }
 }
