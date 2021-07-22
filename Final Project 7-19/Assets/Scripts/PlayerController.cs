@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     public bool invicible = false;
     float invicibleTimer = 3f;
+    public ParticleSystem invinPart;
+
     public bool jumpCheats = false;
     int jumpCounter = 0;
 
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             invicibleTimer -= Time.deltaTime;
             float invinCountdown = Mathf.Floor(invicibleTimer);
+            invinPart.Play();
             if (invicibleTimer <= 0)
             {
                 invicible = false;
@@ -116,6 +120,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Power Up"))
         {
             PowUp.RandomPowerup();
+        }
+
+        // Next LvL
+        if (collision.gameObject.CompareTag("Finish"))
+        {
+
         }
     }
     void LosePowerUp()
