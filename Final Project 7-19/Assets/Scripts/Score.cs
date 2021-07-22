@@ -8,6 +8,11 @@ public class Score : MonoBehaviour
     public int score = 0;
     public Text scoreText;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +23,6 @@ public class Score : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score: " + score;
+        
     }
 }

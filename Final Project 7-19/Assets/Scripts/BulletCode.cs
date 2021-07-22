@@ -9,7 +9,7 @@ public class BulletCode : MonoBehaviour
     // Start is called before the first frame update
     void Start()    
     {
-
+        scoreCon = GameObject.FindObjectOfType<Score>();
     }
 
     // Update is called once per frame
