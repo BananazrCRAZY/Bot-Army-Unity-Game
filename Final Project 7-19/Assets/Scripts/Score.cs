@@ -10,7 +10,13 @@ public class Score : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (GameObject.FindObjectsOfType<Score>().Length > 1)
+        {
+            Destroy(gameObject);
+        } else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     // Start is called before the first frame update

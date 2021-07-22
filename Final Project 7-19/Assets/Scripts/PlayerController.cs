@@ -29,16 +29,16 @@ public class PlayerController : MonoBehaviour
     public MeshRenderer explosiveForm;
 
     public GameoverScreen gos;
-
-    private void Awake()
-    {
-        gameObject.SetActive(false);
-    }
+    public SpawnPoint sp;
     // Start is called before the first frame update
     void Start()
     {
-        gos = GameObject.FindObjectOfType<GameoverScreen>();
         rb = GetComponent<Rigidbody>();
+        gos = GameObject.FindObjectOfType<GameoverScreen>();
+        gameObject.SetActive(false);
+
+        sp = GameObject.FindObjectOfType<SpawnPoint>();
+        transform.position = sp.transform.position;
     }
 
     // Update is called once per frame

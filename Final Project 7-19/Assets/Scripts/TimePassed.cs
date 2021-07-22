@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TimePassed : MonoBehaviour
 {
-    float spawnTimer = 0f;
-    float countDownTimer;
+    public float spawnTimer = 0f;
+    public float countDownTimer;
 
     public float countdownStartTime = 100f;
 
@@ -22,6 +22,7 @@ public class TimePassed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pc = GameObject.FindObjectOfType<PlayerController>();
         if (pc.isDead)
         {
             return;

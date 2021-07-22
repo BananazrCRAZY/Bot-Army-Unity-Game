@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ButtonFunctions : MonoBehaviour
 {
+    public Score scoreCon;
+    public TimePassed timeCon;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreCon = GameObject.FindObjectOfType<Score>();
+        timeCon = GameObject.FindObjectOfType<TimePassed>();
     }
 
     // Update is called once per frame
@@ -24,6 +28,10 @@ public class ButtonFunctions : MonoBehaviour
 
     public void RestartScene()
     {
+        scoreCon.score = 0;
+        timeCon.spawnTimer = 0;
+        timeCon.countDownTimer = timeCon.countdownStartTime;
+
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }

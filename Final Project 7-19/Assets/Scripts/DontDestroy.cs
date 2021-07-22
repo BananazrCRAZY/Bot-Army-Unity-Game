@@ -6,7 +6,14 @@ public class DontDestroy : MonoBehaviour
 {
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (GameObject.FindObjectsOfType<DontDestroy>().Length > 1)
+        {
+            Destroy(gameObject);
+        } else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        
     }
 
     // Start is called before the first frame update
