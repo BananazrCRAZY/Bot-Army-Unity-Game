@@ -24,12 +24,24 @@ public class PlayerController : MonoBehaviour
 
     public MeshRenderer defaultForm;
     public MeshRenderer jumpForm;
-    public MeshRenderer speedForm;
-    public MeshRenderer multiForm;
-    public MeshRenderer explosiveForm;
+    public MeshRenderer shootingForm;
+    public MeshRenderer defaultJumpForm;
+    public MeshRenderer jumpJumpForm;
+    public MeshRenderer shootingJumpForm;
+    public MeshRenderer defaultSpeedForm;
+    public MeshRenderer jumpSpeedForm;
+    public MeshRenderer shootingSpeedForm;
+    public MeshRenderer defaultMultiForm;
+    public MeshRenderer jumpMultiForm;
+    public MeshRenderer shootingMultiForm;
+    public MeshRenderer defaultExplosiveForm;
+    public MeshRenderer jumpExplosiveForm;
+    public MeshRenderer shootingExplosiveForm;
 
     public GameoverScreen gos;
     public SpawnPoint sp;
+
+    public ShooterCode shot;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +51,8 @@ public class PlayerController : MonoBehaviour
 
         sp = GameObject.FindObjectOfType<SpawnPoint>();
         transform.position = sp.transform.position;
+
+        defaultForm.enabled = true;
     }
 
     // Update is called once per frame
@@ -65,6 +79,28 @@ public class PlayerController : MonoBehaviour
             {
                 if (jumpCounter < 2 || jumpCheats)
                 {
+                    if (PowUp.powerUps[0])
+                    {
+                        defaultJumpForm.enabled = false;
+                        jumpJumpForm.enabled = true;
+                    } else if (PowUp.powerUps[1])
+                    {
+                        defaultMultiForm.enabled = false;
+                        jumpMultiForm.enabled = true;
+                    } else if (PowUp.powerUps[2])
+                    {
+                        defaultSpeedForm.enabled = false;
+                        jumpSpeedForm.enabled = true;
+                    } else if (PowUp.powerUps[3])
+                    {
+                        defaultExplosiveForm.enabled = false;
+                        jumpExplosiveForm.enabled = true;
+                    } else
+                    {
+                        defaultForm.enabled = false;
+                        jumpForm.enabled = true;
+                    }
+
                     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                     jumpCounter++;
                 }
@@ -117,12 +153,45 @@ public class PlayerController : MonoBehaviour
         // Double Jump
         if (collision.gameObject.CompareTag("Platform"))
         {
-            jumpCounter = 0;
+            if (shot.canSwitchForm)
+            {
+                if (PowUp.powerUps[0])
+                {
+                    defaultJumpForm.enabled = true;
+                    jumpJumpForm.enabled = false;
+                    shootingJumpForm.enabled = false;
+                }
+                else if (PowUp.powerUps[1])
+                {
+                    defaultMultiForm.enabled = true;
+                    jumpMultiForm.enabled = false;
+                    shootingMultiForm.enabled = false;
+                }
+                else if (PowUp.powerUps[2])
+                {
+                    defaultSpeedForm.enabled = true;
+                    jumpSpeedForm.enabled = false;
+                    shootingSpeedForm.enabled = false;
+                }
+                else if (PowUp.powerUps[3])
+                {
+                    defaultExplosiveForm.enabled = true;
+                    jumpExplosiveForm.enabled = false;
+                    shootingExplosiveForm.enabled = false;
+                }
+                else
+                {
+                    defaultForm.enabled = true;
+                    jumpForm.enabled = false;
+                    shootingForm.enabled = false;
+                }
+            }
         }
 
         // Power Up
         if (collision.gameObject.CompareTag("Power Up"))
         {
+            LosePowerUp();
             PowUp.RandomPowerup();
         }
 
@@ -139,5 +208,22 @@ public class PlayerController : MonoBehaviour
         PowUp.powerUps[1] = false;
         PowUp.powerUps[2] = false;
         PowUp.powerUps[3] = false;
+
+        defaultForm.enabled = true;
+
+        jumpForm.enabled = false;
+        shootingForm.enabled = false;
+        defaultJumpForm.enabled = false;
+        jumpJumpForm.enabled = false;
+        shootingJumpForm.enabled = false;
+        defaultSpeedForm.enabled = false;
+        jumpSpeedForm.enabled = false;
+        shootingSpeedForm.enabled = false;
+        defaultMultiForm.enabled = false;
+        jumpMultiForm.enabled = false;
+        shootingMultiForm.enabled = false;
+        defaultExplosiveForm.enabled = false;
+        jumpExplosiveForm.enabled = false;
+        shootingExplosiveForm.enabled = false;
     }
 }

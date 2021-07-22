@@ -28,30 +28,12 @@ public class PowerupScript : MonoBehaviour
     {
         if (jumpBoost)
         {
-            pc.jumpForm.enabled = true;
-            pc.defaultForm.enabled = false;
             pc.jumpForce = 8f;
         } else if (speed)
         {
-            pc.speedForm.enabled = true;
-            pc.defaultForm.enabled = false;
             pc.speed = 40;
-        } else if (multiShot)
-        {
-            pc.multiForm.enabled = true;
-            pc.defaultForm.enabled = false;
-        } else if (explosiveAmmo)
-        {
-            pc.explosiveForm.enabled = true;
-            pc.defaultForm.enabled = false;
         } else
         {
-            pc.jumpForm.enabled = false;
-            pc.speedForm.enabled = false;
-            pc.multiForm.enabled = false;
-            pc.explosiveForm.enabled = false;
-            pc.defaultForm.enabled = true;
-
             pc.jumpForce = 5f;
             pc.speed = 20;
         }
@@ -65,3 +47,19 @@ public class PowerupScript : MonoBehaviour
         powerUps[Random.Range(0, powerUps.Length)] = true;
     }
 }
+
+            /*pc.defaultForm.enabled = true;
+            pc.jumpForm.enabled = false;
+            pc.shootingForm.enabled = false;
+            pc.defaultJumpForm.enabled = false;
+            pc.jumpJumpForm.enabled = false;
+            pc.shootingJumpForm.enabled = false;
+            pc.defaultSpeedForm.enabled = false;
+            pc.jumpSpeedForm.enabled = false;
+            pc.shootingSpeedForm.enabled = false;
+            pc.defaultMultiForm.enabled = false;
+            pc.jumpMultiForm.enabled = false;
+            pc.shootingMultiForm.enabled = false;
+            pc.defaultExplosiveForm.enabled = false;
+            pc.jumpExplosiveForm.enabled = false;
+            pc.shootingExplosiveForm.enabled = false;*/
