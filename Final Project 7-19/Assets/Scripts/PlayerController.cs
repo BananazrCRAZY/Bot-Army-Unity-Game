@@ -27,9 +27,17 @@ public class PlayerController : MonoBehaviour
     public MeshRenderer speedForm;
     public MeshRenderer multiForm;
     public MeshRenderer explosiveForm;
+
+    public GameoverScreen gos;
+
+    private void Awake()
+    {
+        gameObject.SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {
+        gos = GameObject.FindObjectOfType<GameoverScreen>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -79,7 +87,7 @@ public class PlayerController : MonoBehaviour
     void GameOver()
     {
         isDead = true;
-        gameover.active = true;
+        gos.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
