@@ -125,7 +125,8 @@ public class PlayerController : MonoBehaviour
         // Next LvL
         if (collision.gameObject.CompareTag("Finish"))
         {
-
+            Scene currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.buildIndex + 1);
         }
     }
     void LosePowerUp()
