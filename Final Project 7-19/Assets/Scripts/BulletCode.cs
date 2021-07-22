@@ -5,11 +5,11 @@ using UnityEngine;
 public class BulletCode : MonoBehaviour
 {
     public float speed = 10;
-    public PlayerController pc;
+    public Score scoreCon;
     // Start is called before the first frame update
     void Start()    
     {
-        pc = GameObject.FindObjectOfType<PlayerController>();
+
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class BulletCode : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             gameObject.SetActive(false);
-            pc.score++;
+            scoreCon.score++;
         }
     }
 }

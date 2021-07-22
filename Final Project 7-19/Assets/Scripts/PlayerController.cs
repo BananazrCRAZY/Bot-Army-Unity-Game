@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     public float jumpForce = 5f;
     public bool isDead = false;
-    public int score = 0;
-    public Text scoreText;
     public GameObject gameover;
 
     public bool invicible = false;
@@ -63,8 +61,6 @@ public class PlayerController : MonoBehaviour
                     jumpCounter++;
                 }
             }
-
-            scoreText.text = "Score: " + score;
         }
 
         // Invicible Timer

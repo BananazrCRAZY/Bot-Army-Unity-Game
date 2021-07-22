@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ExplosiveBullet : MonoBehaviour
 {
-    public float speed = 10;
-    public PlayerController pc;
+    public float speed = 12;
+    public Score scoreCon;
     bool hasExploded = false;
     public SphereCollider explosionCollider;
     public ParticleSystem explosionParticles;
@@ -13,7 +13,7 @@ public class ExplosiveBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pc = GameObject.FindObjectOfType<PlayerController>();
+
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ public class ExplosiveBullet : MonoBehaviour
                 Explode();
             }
             other.gameObject.SetActive(false);
-            pc.score++;
+            scoreCon.score++;
         }
     }
 }
