@@ -33,11 +33,11 @@ public class TimePassed : MonoBehaviour
         float flooredCountDownTimer = Mathf.Floor(countDownTimer) + 1;
         if(countDownTimer <= 0)
         {
-          //  countDownText.text = 0.ToString();
+            //countDownText.text = 0.ToString();
         }
         else
         {
-           // countDownText.text = flooredCountDownTimer.ToString;
+            //countDownText.text = flooredCountDownTimer.ToString;
         }
     }
 }

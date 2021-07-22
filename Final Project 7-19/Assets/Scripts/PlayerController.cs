@@ -6,15 +6,26 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public int speed = 20;
+    public int powerSpeed = 40;
     Rigidbody rb;
-    float jumpForce = 7f;
+    public float jumpForce = 5f;
     public bool isDead = false;
     public int score = 0;
     public Text scoreText;
     public GameObject gameover;
 
+    public bool invicible = false;
+    float invicibleTimer = 3f;
     public bool jumpCheats = false;
     int jumpCounter = 0;
+
+    public PowerupScript PowUp;
+
+    public MeshRenderer defaultForm;
+    public MeshRenderer jumpForm;
+    public MeshRenderer speedForm;
+    public MeshRenderer multiForm;
+    public MeshRenderer explosiveForm;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,29 +40,18 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.D))
             {
                 transform.Translate(Vector3.right * speed * Time.deltaTime);
-
-                //(For ex)transform.Translate(Vector3.forward * speed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.A))
             {
                 transform.Translate(Vector3.left * speed * Time.deltaTime);
-
-                //(For ex)transform.Translate(Vector3.back * speed * Time.deltaTime);
             }
+
+            // Turn other way
             if (Input.GetKey(KeyCode.S))
             {
-                transform.Translate(Vector3.back * speed * Time.deltaTime);
-
-                //(For ex) transform.Translate(Vector3.right * speed * Time.deltaTime);
-                //transform.Rotate(new Vector3(0, rotSped, 0) * Time.deltaTime * -1);
+                transform.Rotate(0, 180, 0);
             }
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-                //(For ex)transform.Translate(Vector3.left * speed * Time.deltaTime);
-                //transform.Rotate(new Vector3(0, rotSped, 0) * Time.deltaTime);
-            }
             if (Input.GetButtonDown("Jump"))
             {
                 if (jumpCounter < 2 || jumpCheats)
@@ -62,7 +62,18 @@ public class PlayerController : MonoBehaviour
             }
 
             scoreText.text = "Score: " + score;
-        } 
+        }
+
+        // Invicible Timer
+        if (invicible)
+        {
+            invicibleTimer -= Time.deltaTime;
+            float invinCountdown = Mathf.Floor(invicibleTimer);
+            if (invicibleTimer <= 0)
+            {
+                invicible = false;
+            }
+        }
     }
 
     void GameOver()
@@ -70,19 +81,48 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         gameover.active = true;
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            GameOver();
+            if (invicible)
+            {
+                Debug.Log("Can't touch ME!");
+            } else
+            {
+                if (PowUp.powerUps[0] == true || PowUp.powerUps[1] == true || PowUp.powerUps[2] == true || PowUp.powerUps[3] == true)
+                {
+                    LosePowerUp();
+                    invicible = true;
+                } else
+                {
+                    GameOver();
+                }
+            }
         }
     }
 
+    // jump fix
     private void OnCollisionEnter(Collision collision)
     {
+        // Double Jump
         if (collision.gameObject.CompareTag("Platform"))
         {
             jumpCounter = 0;
         }
+
+        // Power Up
+        if (collision.gameObject.CompareTag("Power Up"))
+        {
+            PowUp.RandomPowerup();
+        }
+    }
+    void LosePowerUp()
+    {
+        PowUp.powerUps[0] = false;
+        PowUp.powerUps[1] = false;
+        PowUp.powerUps[2] = false;
+        PowUp.powerUps[3] = false;
     }
 }
