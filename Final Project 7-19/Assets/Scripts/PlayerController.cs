@@ -97,24 +97,89 @@ public class PlayerController : MonoBehaviour
                 {
                     if (PowUp.powerUps[0])
                     {
+                        defaultForm.enabled = false;
+                        jumpForm.enabled = false;
+                        shootingForm.enabled = false;
                         defaultJumpForm.enabled = false;
                         jumpJumpForm.enabled = true;
+                        shootingJumpForm.enabled = false;
+                        defaultSpeedForm.enabled = false;
+                        jumpSpeedForm.enabled = false;
+                        shootingSpeedForm.enabled = false;
+                        defaultMultiForm.enabled = false;
+                        jumpMultiForm.enabled = false;
+                        shootingMultiForm.enabled = false;
+                        defaultExplosiveForm.enabled = false;
+                        jumpExplosiveForm.enabled = false;
+                        shootingExplosiveForm.enabled = false;
                     } else if (PowUp.powerUps[1])
                     {
+                        defaultForm.enabled = false;
+                        jumpForm.enabled = false;
+                        shootingForm.enabled = false;
+                        defaultJumpForm.enabled = false;
+                        jumpJumpForm.enabled = false;
+                        shootingJumpForm.enabled = false;
+                        defaultSpeedForm.enabled = false;
+                        jumpSpeedForm.enabled = false;
+                        shootingSpeedForm.enabled = false;
                         defaultMultiForm.enabled = false;
                         jumpMultiForm.enabled = true;
+                        shootingMultiForm.enabled = false;
+                        defaultExplosiveForm.enabled = false;
+                        jumpExplosiveForm.enabled = false;
+                        shootingExplosiveForm.enabled = false;
                     } else if (PowUp.powerUps[2])
                     {
+                        defaultForm.enabled = false;
+                        jumpForm.enabled = false;
+                        shootingForm.enabled = false;
+                        defaultJumpForm.enabled = false;
+                        jumpJumpForm.enabled = false;
+                        shootingJumpForm.enabled = false;
                         defaultSpeedForm.enabled = false;
                         jumpSpeedForm.enabled = true;
+                        shootingSpeedForm.enabled = false;
+                        defaultMultiForm.enabled = false;
+                        jumpMultiForm.enabled = false;
+                        shootingMultiForm.enabled = false;
+                        defaultExplosiveForm.enabled = false;
+                        jumpExplosiveForm.enabled = false;
+                        shootingExplosiveForm.enabled = false;
                     } else if (PowUp.powerUps[3])
                     {
+                        defaultForm.enabled = false;
+                        jumpForm.enabled = false;
+                        shootingForm.enabled = false;
+                        defaultJumpForm.enabled = false;
+                        jumpJumpForm.enabled = false;
+                        shootingJumpForm.enabled = false;
+                        defaultSpeedForm.enabled = false;
+                        jumpSpeedForm.enabled = false;
+                        shootingSpeedForm.enabled = false;
+                        defaultMultiForm.enabled = false;
+                        jumpMultiForm.enabled = false;
+                        shootingMultiForm.enabled = false;
                         defaultExplosiveForm.enabled = false;
                         jumpExplosiveForm.enabled = true;
+                        shootingExplosiveForm.enabled = false;
                     } else
                     {
                         defaultForm.enabled = false;
                         jumpForm.enabled = true;
+                        shootingForm.enabled = false;
+                        defaultJumpForm.enabled = false;
+                        jumpJumpForm.enabled = false;
+                        shootingJumpForm.enabled = false;
+                        defaultSpeedForm.enabled = false;
+                        jumpSpeedForm.enabled = false;
+                        shootingSpeedForm.enabled = false;
+                        defaultMultiForm.enabled = false;
+                        jumpMultiForm.enabled = false;
+                        shootingMultiForm.enabled = false;
+                        defaultExplosiveForm.enabled = false;
+                        jumpExplosiveForm.enabled = false;
+                        shootingExplosiveForm.enabled = false;
                     }
 
                     rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -173,38 +238,93 @@ public class PlayerController : MonoBehaviour
             {
                 if (PowUp.powerUps[0])
                 {
+                    defaultForm.enabled = false;
+                    jumpForm.enabled = false;
+                    shootingForm.enabled = false;
                     defaultJumpForm.enabled = true;
                     jumpJumpForm.enabled = false;
                     shootingJumpForm.enabled = false;
-                    jumpCounter = 0;
+                    defaultSpeedForm.enabled = false;
+                    jumpSpeedForm.enabled = false;
+                    shootingSpeedForm.enabled = false;
+                    defaultMultiForm.enabled = false;
+                    jumpMultiForm.enabled = false;
+                    shootingMultiForm.enabled = false;
+                    defaultExplosiveForm.enabled = false;
+                    jumpExplosiveForm.enabled = false;
+                    shootingExplosiveForm.enabled = false;
                 }
                 else if (PowUp.powerUps[1])
                 {
+                    defaultForm.enabled = false;
+                    jumpForm.enabled = false;
+                    shootingForm.enabled = false;
+                    defaultJumpForm.enabled = false;
+                    jumpJumpForm.enabled = false;
+                    shootingJumpForm.enabled = false;
+                    defaultSpeedForm.enabled = false;
+                    jumpSpeedForm.enabled = false;
+                    shootingSpeedForm.enabled = false;
                     defaultMultiForm.enabled = true;
                     jumpMultiForm.enabled = false;
                     shootingMultiForm.enabled = false;
-                    jumpCounter = 0;
+                    defaultExplosiveForm.enabled = false;
+                    jumpExplosiveForm.enabled = false;
+                    shootingExplosiveForm.enabled = false;
                 }
                 else if (PowUp.powerUps[2])
                 {
+                    defaultForm.enabled = false;
+                    jumpForm.enabled = false;
+                    shootingForm.enabled = false;
+                    defaultJumpForm.enabled = false;
+                    jumpJumpForm.enabled = false;
+                    shootingJumpForm.enabled = false;
                     defaultSpeedForm.enabled = true;
                     jumpSpeedForm.enabled = false;
                     shootingSpeedForm.enabled = false;
-                    jumpCounter = 0;
+                    defaultMultiForm.enabled = false;
+                    jumpMultiForm.enabled = false;
+                    shootingMultiForm.enabled = false;
+                    defaultExplosiveForm.enabled = false;
+                    jumpExplosiveForm.enabled = false;
+                    shootingExplosiveForm.enabled = false;
                 }
                 else if (PowUp.powerUps[3])
                 {
+                    defaultForm.enabled = false;
+                    jumpForm.enabled = false;
+                    shootingForm.enabled = false;
+                    defaultJumpForm.enabled = false;
+                    jumpJumpForm.enabled = false;
+                    shootingJumpForm.enabled = false;
+                    defaultSpeedForm.enabled = false;
+                    jumpSpeedForm.enabled = false;
+                    shootingSpeedForm.enabled = false;
+                    defaultMultiForm.enabled = false;
+                    jumpMultiForm.enabled = false;
+                    shootingMultiForm.enabled = false;
                     defaultExplosiveForm.enabled = true;
                     jumpExplosiveForm.enabled = false;
                     shootingExplosiveForm.enabled = false;
-                    jumpCounter = 0;
                 }
                 else
                 {
                     defaultForm.enabled = true;
                     jumpForm.enabled = false;
                     shootingForm.enabled = false;
-                    jumpCounter = 0;
+                    defaultJumpForm.enabled = false;
+                    jumpJumpForm.enabled = false;
+                    shootingJumpForm.enabled = false;
+                    defaultSpeedForm.enabled = false;
+                    jumpSpeedForm.enabled = false;
+                    shootingSpeedForm.enabled = false;
+                    defaultMultiForm.enabled = false;
+                    jumpMultiForm.enabled = false;
+                    shootingMultiForm.enabled = false;
+                    defaultExplosiveForm.enabled = false;
+                    jumpExplosiveForm.enabled = false;
+                    shootingExplosiveForm.enabled = false;
                 }
             }
         }
@@ -214,6 +334,10 @@ public class PlayerController : MonoBehaviour
         {
             LosePowerUp();
             PowUp.RandomPowerup();
+            Debug.Log(PowUp.powerUps[0]);
+            Debug.Log(PowUp.powerUps[1]);
+            Debug.Log(PowUp.powerUps[2]);
+            Debug.Log(PowUp.powerUps[3]);
             Destroy(collision.gameObject);
         }
 
