@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public int speed = 20;
     public int powerSpeed = 40;
     Rigidbody rb;
-    public float jumpForce = 5f;
+    public float jumpForce = 8f;
     public bool isDead = false;
     public GameObject gameover;
 
@@ -47,12 +47,28 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         gos = GameObject.FindObjectOfType<GameoverScreen>();
-        gameObject.SetActive(false);
 
-        sp = GameObject.FindObjectOfType<SpawnPoint>();
-        transform.position = sp.transform.position;
+        //sp = GameObject.FindObjectOfType<SpawnPoint>();
+        //transform.position = sp.transform.position;
 
         defaultForm.enabled = true;
+
+        jumpForm.enabled = false;
+        shootingForm.enabled = false;
+        defaultJumpForm.enabled = false;
+        jumpJumpForm.enabled = false;
+        shootingJumpForm.enabled = false;
+        defaultSpeedForm.enabled = false;
+        jumpSpeedForm.enabled = false;
+        shootingSpeedForm.enabled = false;
+        defaultMultiForm.enabled = false;
+        jumpMultiForm.enabled = false;
+        shootingMultiForm.enabled = false;
+        defaultExplosiveForm.enabled = false;
+        jumpExplosiveForm.enabled = false;
+        shootingExplosiveForm.enabled = false;
+
+        Debug.Log(PowUp.powerUps[3]);
     }
 
     // Update is called once per frame
@@ -62,18 +78,18 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D))
             {
-                transform.Translate(Vector3.right * speed * Time.deltaTime);
+                transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Translate(Vector3.left * speed * Time.deltaTime);
+                transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
 
             // Turn other way
-            if (Input.GetKey(KeyCode.S))
+            /*if (Input.GetKey(KeyCode.S))
             {
                 transform.Rotate(0, 180, 0);
-            }
+            }*/
 
             if (Input.GetButtonDown("Jump"))
             {
@@ -160,30 +176,35 @@ public class PlayerController : MonoBehaviour
                     defaultJumpForm.enabled = true;
                     jumpJumpForm.enabled = false;
                     shootingJumpForm.enabled = false;
+                    jumpCounter = 0;
                 }
                 else if (PowUp.powerUps[1])
                 {
                     defaultMultiForm.enabled = true;
                     jumpMultiForm.enabled = false;
                     shootingMultiForm.enabled = false;
+                    jumpCounter = 0;
                 }
                 else if (PowUp.powerUps[2])
                 {
                     defaultSpeedForm.enabled = true;
                     jumpSpeedForm.enabled = false;
                     shootingSpeedForm.enabled = false;
+                    jumpCounter = 0;
                 }
                 else if (PowUp.powerUps[3])
                 {
                     defaultExplosiveForm.enabled = true;
                     jumpExplosiveForm.enabled = false;
                     shootingExplosiveForm.enabled = false;
+                    jumpCounter = 0;
                 }
                 else
                 {
                     defaultForm.enabled = true;
                     jumpForm.enabled = false;
                     shootingForm.enabled = false;
+                    jumpCounter = 0;
                 }
             }
         }
@@ -193,6 +214,7 @@ public class PlayerController : MonoBehaviour
         {
             LosePowerUp();
             PowUp.RandomPowerup();
+            Destroy(collision.gameObject);
         }
 
         // Next LvL

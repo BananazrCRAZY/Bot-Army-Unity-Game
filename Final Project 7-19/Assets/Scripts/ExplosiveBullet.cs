@@ -21,7 +21,7 @@ public class ExplosiveBullet : MonoBehaviour
     {
         if (hasExploded == false)
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
         Destroy(gameObject, 5.0f);
     }

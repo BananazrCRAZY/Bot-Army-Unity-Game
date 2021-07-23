@@ -52,9 +52,12 @@ public class ShooterCode : MonoBehaviour
             pc.defaultMultiForm.enabled = false;
             pc.jumpMultiForm.enabled = false;
             pc.shootingMultiForm.enabled = true;
+            Vector3 currentPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+            Instantiate(Bullet, currentPos, this.transform.rotation);
+            currentPos = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+            Instantiate(Bullet, currentPos, this.transform.rotation);
+            currentPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             Instantiate(Bullet, this.transform.position, this.transform.rotation);
-            //Instantiate(Bullet, this.transform.position, this.transform.rotation);
-            //Instantiate(Bullet, this.transform.position, this.transform.rotation);
             bool canSwitchForm = false;
         } else if (PowUp.speed && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
         {
