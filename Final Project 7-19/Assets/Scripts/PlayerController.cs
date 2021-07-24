@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     public MeshRenderer jumpExplosiveForm;
     public MeshRenderer shootingExplosiveForm;
 
-    //public GameoverScreen gos;
+    public GameoverScreen gos;
     //public SpawnPoint sp;
 
     public ShooterCode shot;
@@ -45,12 +45,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //gos = GameObject.FindObjectOfType<GameoverScreen>();
+        gos = GameObject.FindObjectOfType<GameoverScreen>();
 
         //sp = GameObject.FindObjectOfType<SpawnPoint>();
         //transform.position = sp.transform.position;
 
-        invinPart.Stop();
         LosePowerUp();
     }
 
@@ -81,6 +80,11 @@ public class PlayerController : MonoBehaviour
             shot.timeBetweenShot = 0.5f;
         }
 
+        if (transform.position.y <= - 100)
+        {
+            GameOver();
+        }
+
         if (isDead == false)
         {
             if (Input.GetKey(KeyCode.D))
@@ -91,12 +95,10 @@ public class PlayerController : MonoBehaviour
             {
                 transform.Translate(Vector3.right * speed * Time.deltaTime);
             }
-
-            // Turn other way
-            /*if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S))
             {
-                transform.Rotate(0, 180, 0);
-            }*/
+                transform.Translate(Vector3.down * speed * Time.deltaTime);
+            }
 
             if (Input.GetButtonDown("Jump"))
             {
@@ -139,7 +141,6 @@ public class PlayerController : MonoBehaviour
             if (invicibleTimer <= 0)
             {
                 invicible = false;
-                invinPart.Stop();
             }
         }
     }
@@ -147,7 +148,7 @@ public class PlayerController : MonoBehaviour
     void GameOver()
     {
         isDead = true;
-        //gos.gameObject.SetActive(true);
+        gameover.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
