@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         else if (PowUp.powerUps[2])
         {
             speed = 15;
-            shot.timeBetweenShot = 0.2f;
+            shot.timeBetweenShot = 0.25f;
         } 
         else if (PowUp.powerUps[3])
         {
