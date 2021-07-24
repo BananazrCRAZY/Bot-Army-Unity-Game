@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public int speed = 20;
-    public int powerSpeed = 40;
+    public int speed = 13;
+    public int powerSpeed = 26;
     Rigidbody rb;
     public float jumpForce = 8f;
     public bool isDead = false;
@@ -253,6 +253,7 @@ public class PlayerController : MonoBehaviour
                     defaultExplosiveForm.enabled = false;
                     jumpExplosiveForm.enabled = false;
                     shootingExplosiveForm.enabled = false;
+                    jumpCounter = 0;
                 }
                 else if (PowUp.powerUps[1])
                 {
@@ -271,6 +272,7 @@ public class PlayerController : MonoBehaviour
                     defaultExplosiveForm.enabled = false;
                     jumpExplosiveForm.enabled = false;
                     shootingExplosiveForm.enabled = false;
+                    jumpCounter = 0;
                 }
                 else if (PowUp.powerUps[2])
                 {
@@ -289,6 +291,7 @@ public class PlayerController : MonoBehaviour
                     defaultExplosiveForm.enabled = false;
                     jumpExplosiveForm.enabled = false;
                     shootingExplosiveForm.enabled = false;
+                    jumpCounter = 0;
                 }
                 else if (PowUp.powerUps[3])
                 {
@@ -307,6 +310,7 @@ public class PlayerController : MonoBehaviour
                     defaultExplosiveForm.enabled = true;
                     jumpExplosiveForm.enabled = false;
                     shootingExplosiveForm.enabled = false;
+                    jumpCounter = 0;
                 }
                 else
                 {
@@ -325,6 +329,7 @@ public class PlayerController : MonoBehaviour
                     defaultExplosiveForm.enabled = false;
                     jumpExplosiveForm.enabled = false;
                     shootingExplosiveForm.enabled = false;
+                    jumpCounter = 0;
                 }
             }
         }

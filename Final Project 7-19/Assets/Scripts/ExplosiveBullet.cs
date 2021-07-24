@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplosiveBullet : MonoBehaviour
 {
-    public float speed = 12;
+    public float speed = 17;
     public Score scoreCon;
     bool hasExploded = false;
     public SphereCollider explosionCollider;

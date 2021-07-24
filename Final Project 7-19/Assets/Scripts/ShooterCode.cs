@@ -32,7 +32,7 @@ public class ShooterCode : MonoBehaviour
             canShoot = true;
         }
         
-        if (Input.GetMouseButton(0) && canShoot && pc.isDead == false)
+        if (PowUp.powerUps[0] == false && PowUp.powerUps[1] == false && PowUp.powerUps[2] == false && PowUp.powerUps[3] == false && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
         {
             timeBetweenShot = 0.5f;
             canShoot = false;
@@ -56,7 +56,7 @@ public class ShooterCode : MonoBehaviour
             bool canSwitchForm = false;
             // Ammo--;
             // Debug.Log(Ammo + " ammo left");
-        } else if (PowUp.multiShot && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
+        } else if (PowUp.powerUps[1] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
         {
             timeBetweenShot = 0.45f;
             canShoot = false;
@@ -83,7 +83,7 @@ public class ShooterCode : MonoBehaviour
             currentPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             Instantiate(Bullet, this.transform.position, this.transform.rotation);
             bool canSwitchForm = false;
-        } else if (PowUp.speed && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
+        } else if (PowUp.powerUps[2] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
         {
             timeBetweenShot = 0.27f;
             canShoot = false;
@@ -105,7 +105,7 @@ public class ShooterCode : MonoBehaviour
             pc.shootingExplosiveForm.enabled = false;
             Instantiate(Bullet, this.transform.position, this.transform.rotation);
             bool canSwitchForm = false;
-        } else if (PowUp.explosiveAmmo && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
+        } else if (PowUp.powerUps[3] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
         {
             canShoot = false;
             timeUntilNextShot = Time.time + timeBetweenShot;
@@ -126,7 +126,7 @@ public class ShooterCode : MonoBehaviour
             pc.shootingExplosiveForm.enabled = true;
             Instantiate(explosiveBullet, this.transform.position, this.transform.rotation);
             bool canSwitchForm = false;
-        } else if (PowUp.jumpBoost && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
+        } else if (PowUp.powerUps[0] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
         {
             canShoot = false;
             timeUntilNextShot = Time.time + timeBetweenShot;
