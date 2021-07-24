@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         //sp = GameObject.FindObjectOfType<SpawnPoint>();
         //transform.position = sp.transform.position;
 
+        invinPart.Stop();
         LosePowerUp();
     }
 
@@ -138,6 +139,7 @@ public class PlayerController : MonoBehaviour
             if (invicibleTimer <= 0)
             {
                 invicible = false;
+                invinPart.Stop();
             }
         }
     }
