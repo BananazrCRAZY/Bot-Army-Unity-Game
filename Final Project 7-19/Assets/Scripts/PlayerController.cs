@@ -6,10 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public int speed = 13;
-    public int powerSpeed = 26;
+    public int speed = 7;
     Rigidbody rb;
-    public float jumpForce = 8f;
+    public float jumpForce = 5.2f;
     public bool isDead = false;
     public GameObject gameover;
 
@@ -38,42 +37,45 @@ public class PlayerController : MonoBehaviour
     public MeshRenderer jumpExplosiveForm;
     public MeshRenderer shootingExplosiveForm;
 
-    public GameoverScreen gos;
-    public SpawnPoint sp;
+    //public GameoverScreen gos;
+    //public SpawnPoint sp;
 
     public ShooterCode shot;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        gos = GameObject.FindObjectOfType<GameoverScreen>();
+        //gos = GameObject.FindObjectOfType<GameoverScreen>();
 
         //sp = GameObject.FindObjectOfType<SpawnPoint>();
         //transform.position = sp.transform.position;
 
-        defaultForm.enabled = true;
-
-        jumpForm.enabled = false;
-        shootingForm.enabled = false;
-        defaultJumpForm.enabled = false;
-        jumpJumpForm.enabled = false;
-        shootingJumpForm.enabled = false;
-        defaultSpeedForm.enabled = false;
-        jumpSpeedForm.enabled = false;
-        shootingSpeedForm.enabled = false;
-        defaultMultiForm.enabled = false;
-        jumpMultiForm.enabled = false;
-        shootingMultiForm.enabled = false;
-        defaultExplosiveForm.enabled = false;
-        jumpExplosiveForm.enabled = false;
-        shootingExplosiveForm.enabled = false;
-
-        Debug.Log(PowUp.powerUps[3]);
+        LosePowerUp();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PowUp.powerUps[0])
+        {
+            jumpForce = 8f;
+        }
+        else if (PowUp.powerUps[1])
+        {
+            shot.timeBetweenShot = 0.4f;
+        }
+        else if (PowUp.powerUps[2])
+        {
+            speed = 15;
+            shot.timeBetweenShot = 0.2f;
+        }
+        else if (PowUp.powerUps[0] == false && PowUp.powerUps[1] == false && PowUp.powerUps[2] == false)
+        {
+            jumpForce = 5.2f;
+            speed = 7;
+            shot.timeBetweenShot = 0.5f;
+        }
+
         if (isDead == false)
         {
             if (Input.GetKey(KeyCode.D))
@@ -204,7 +206,7 @@ public class PlayerController : MonoBehaviour
     void GameOver()
     {
         isDead = true;
-        gos.gameObject.SetActive(true);
+        //gos.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)

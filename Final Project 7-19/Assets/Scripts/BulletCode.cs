@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletCode : MonoBehaviour
 {
-    public float speed = 15;
+    public int speed = 15;
     public Score scoreCon;
     // Start is called before the first frame update
     void Start()    
@@ -27,4 +27,9 @@ public class BulletCode : MonoBehaviour
             scoreCon.score++;
         }
     }
+
+    /*private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }*/
 }

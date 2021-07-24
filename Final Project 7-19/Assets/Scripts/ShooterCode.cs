@@ -13,7 +13,7 @@ public class ShooterCode : MonoBehaviour
     public PowerupScript PowUp;
 
     // For default vs Shooting on platform
-    float holdShooingForm = 0.18f;
+    float holdShooingForm = 0.1f;
     public float timeShootingForm;
     public bool canSwitchForm = true;
 
@@ -22,6 +22,9 @@ public class ShooterCode : MonoBehaviour
     void Start()
     {
         timeShootingForm = Time.time * holdShooingForm;
+
+        //Transform eBullet = Instantiate(explosiveBullet) as Transform;
+        //Physics.IgnoreCollision(eBullet.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     // Update is called once per frame
@@ -58,7 +61,6 @@ public class ShooterCode : MonoBehaviour
             // Debug.Log(Ammo + " ammo left");
         } else if (PowUp.powerUps[1] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
         {
-            timeBetweenShot = 0.45f;
             canShoot = false;
             timeUntilNextShot = Time.time + timeBetweenShot;
             pc.defaultForm.enabled = false;
@@ -80,12 +82,15 @@ public class ShooterCode : MonoBehaviour
             Instantiate(Bullet, currentPos, this.transform.rotation);
             currentPos = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
             Instantiate(Bullet, currentPos, this.transform.rotation);
+            currentPos = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+            Instantiate(Bullet, currentPos, this.transform.rotation);
+            currentPos = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+            Instantiate(Bullet, currentPos, this.transform.rotation);
             currentPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             Instantiate(Bullet, this.transform.position, this.transform.rotation);
             bool canSwitchForm = false;
         } else if (PowUp.powerUps[2] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
         {
-            timeBetweenShot = 0.27f;
             canShoot = false;
             timeUntilNextShot = Time.time + timeBetweenShot;
             pc.defaultForm.enabled = false;

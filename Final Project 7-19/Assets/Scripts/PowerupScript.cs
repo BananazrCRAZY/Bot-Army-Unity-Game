@@ -11,6 +11,7 @@ public class PowerupScript : MonoBehaviour
     public bool[] powerUps = new bool[4];
 
     public PlayerController pc;
+    public ShooterCode shotC;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,17 +30,22 @@ public class PowerupScript : MonoBehaviour
  
     void Update()
     {
-        if (jumpBoost)
+        /*if (powerUps[0])
         {
-            pc.jumpForce = 13f;
-        } else if (speed)
+            pc.jumpForce = 12f;
+        } else if (powerUps[1])
         {
-            pc.speed = 40;
-        } else
+            shotC.timeBetweenShot = 0.45f;
+        } else if (powerUps[2])
         {
-            pc.jumpForce = 5f;
             pc.speed = 20;
-        }
+            shotC.timeBetweenShot = 0.27f;
+        } else if (powerUps[0] == false && powerUps[1] == false && powerUps[2] == false)
+        {
+            pc.jumpForce = 5.5f;
+            pc.speed = 7;
+            shotC.timeBetweenShot = 0.5f;
+        }*/
     }
     public void RandomPowerup()
     {
