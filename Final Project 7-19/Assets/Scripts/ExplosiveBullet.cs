@@ -32,7 +32,7 @@ public class ExplosiveBullet : MonoBehaviour
         explosionCollider.enabled = true;
         hasExploded = true;
         explodeMesh.enabled = true;
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject, 2f);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -45,10 +45,9 @@ public class ExplosiveBullet : MonoBehaviour
             other.gameObject.SetActive(false);
             scoreCon.score++;
         }
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            gameObject.SetActive(false);
+        }
     }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
-    }*/
 }

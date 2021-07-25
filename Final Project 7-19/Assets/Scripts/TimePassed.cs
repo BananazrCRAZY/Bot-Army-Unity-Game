@@ -10,9 +10,10 @@ public class TimePassed : MonoBehaviour
 
     public float countdownStartTime = 100f;
 
-    public TextAlignment timerText;
-    public TextAlignment countDownText;
+    //public Text timerText;
+    public Text countDownText;
     public PlayerController pc;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +35,11 @@ public class TimePassed : MonoBehaviour
         float flooredCountDownTimer = Mathf.Floor(countDownTimer) + 1;
         if(countDownTimer <= 0)
         {
-            //countDownText.text = 0.ToString();
+            countDownText.text = "Time: " + 0.ToString();
         }
         else
         {
-            //countDownText.text = flooredCountDownTimer.ToString;
+            countDownText.text = "Time: " + flooredCountDownTimer.ToString();
         }
     }
 }

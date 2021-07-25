@@ -26,10 +26,9 @@ public class BulletCode : MonoBehaviour
             gameObject.SetActive(false);
             scoreCon.score++;
         }
+        if (other.gameObject.CompareTag("Platform"))
+        {
+            gameObject.SetActive(false);
+        }
     }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        Destroy(gameObject);
-    }*/
 }

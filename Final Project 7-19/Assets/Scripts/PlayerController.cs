@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             shot.timeBetweenShot = 0.5f;
         }
 
-        if (transform.position.y <= - 100)
+        if (transform.position.y <= -91)
         {
             GameOver();
         }
