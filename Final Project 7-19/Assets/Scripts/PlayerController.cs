@@ -218,10 +218,6 @@ public class PlayerController : MonoBehaviour
         {
             LosePowerUp();
             PowUp.RandomPowerup();
-            Debug.Log(PowUp.powerUps[0]);
-            Debug.Log(PowUp.powerUps[1]);
-            Debug.Log(PowUp.powerUps[2]);
-            Debug.Log(PowUp.powerUps[3]);
             Destroy(collision.gameObject);
         }
 
