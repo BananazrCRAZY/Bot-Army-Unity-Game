@@ -18,12 +18,12 @@ public class TimePassed : MonoBehaviour
     void Start()
     {
         countDownTimer = countdownStartTime;
+        pc = GameObject.FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        pc = GameObject.FindObjectOfType<PlayerController>();
         if (pc.isDead)
         {
             return;

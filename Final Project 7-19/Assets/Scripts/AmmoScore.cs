@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class DontDestroy : MonoBehaviour
+public class AmmoScore : MonoBehaviour
 {
+    public ShooterCode shootC;
+    public Text ammoText;
 
     private void Awake()
     {
-        if (GameObject.FindObjectsOfType<DontDestroy>().Length > 1)
+        if (GameObject.FindObjectsOfType<Score>().Length > 1)
         {
             Destroy(gameObject);
-        } else
+        }
+        else
         {
             DontDestroyOnLoad(gameObject);
         }
-        
     }
 
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class DontDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
+        ammoText.text = "Ammo: " + shootC.Ammo;
+
     }
 }

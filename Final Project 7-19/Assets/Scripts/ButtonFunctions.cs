@@ -21,11 +21,6 @@ public class ButtonFunctions : MonoBehaviour
         
     }
 
-    public void TestButton()
-    {
-        Debug.Log("Buuton pressed");
-    }
-
     public void RestartScene()
     {
         scoreCon.score = 0;

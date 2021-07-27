@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShooterCode : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class ShooterCode : MonoBehaviour
     public float timeShootingForm;
     public bool canSwitchForm = true;
 
-    //public int Ammo = 20;
+    public int Ammo = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,68 +35,92 @@ public class ShooterCode : MonoBehaviour
         {
             canShoot = true;
         }
-        
-        if (PowUp.powerUps[0] == false && PowUp.powerUps[1] == false && PowUp.powerUps[2] == false && PowUp.powerUps[3] == false && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
+
+        if (pc.isDead == false && Input.GetMouseButton(0) && canShoot && Ammo > 0)
         {
-            canShoot = false;
-            timeUntilNextShot = Time.time + timeBetweenShot;
+            if (PowUp.powerUps[1])
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
 
-            pc.NoMesh();
-            pc.shootingForm.enabled = true;
+                pc.NoMesh();
+                pc.shootingMultiForm.enabled = true;
 
-            Instantiate(Bullet, this.transform.position, this.transform.rotation);
-            bool canSwitchForm = false;
-            // Ammo--;
-            // Debug.Log(Ammo + " ammo left");
-        } else if (PowUp.powerUps[1] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
-        {
-            canShoot = false;
-            timeUntilNextShot = Time.time + timeBetweenShot;
+                Vector3 currentPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                Instantiate(Bullet, currentPos, this.transform.rotation);
+                currentPos = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+                Instantiate(Bullet, currentPos, this.transform.rotation);
+                currentPos = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
+                Instantiate(Bullet, currentPos, this.transform.rotation);
+                currentPos = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+                Instantiate(Bullet, currentPos, this.transform.rotation);
+                currentPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                Instantiate(Bullet, this.transform.position, this.transform.rotation);
+                bool canSwitchForm = false;
+                if (Ammo == 1)
+                {
+                    Ammo--;
+                } 
+                else
+                {
+                    Ammo -= 2;
+                }
+            }
+            else if (PowUp.powerUps[2])
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
 
-            pc.NoMesh();
-            pc.shootingMultiForm.enabled = true;
+                pc.NoMesh();
+                pc.shootingSpeedForm.enabled = true;
 
-            Vector3 currentPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
-            Instantiate(Bullet, currentPos, this.transform.rotation);
-            currentPos = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
-            Instantiate(Bullet, currentPos, this.transform.rotation);
-            currentPos = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z);
-            Instantiate(Bullet, currentPos, this.transform.rotation);
-            currentPos = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
-            Instantiate(Bullet, currentPos, this.transform.rotation);
-            currentPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            Instantiate(Bullet, this.transform.position, this.transform.rotation);
-            bool canSwitchForm = false;
-        } else if (PowUp.powerUps[2] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
-        {
-            canShoot = false;
-            timeUntilNextShot = Time.time + timeBetweenShot;
+                Instantiate(Bullet, this.transform.position, this.transform.rotation);
+                bool canSwitchForm = false;
+                Ammo--;
+            }
+            else if (PowUp.powerUps[3])
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
 
-            pc.NoMesh();
-            pc.shootingSpeedForm.enabled = true;
+                pc.NoMesh();
+                pc.shootingExplosiveForm.enabled = true;
 
-            Instantiate(Bullet, this.transform.position, this.transform.rotation);
-            bool canSwitchForm = false;
-        } else if (PowUp.powerUps[3] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
-        {
-            canShoot = false;
-            timeUntilNextShot = Time.time + timeBetweenShot;
+                Instantiate(explosiveBullet, this.transform.position, this.transform.rotation);
+                bool canSwitchForm = false;
+                if (Ammo == 1)
+                {
+                    Ammo--;
+                }
+                else
+                {
+                    Ammo -= 2;
+                }
+            }
+            else if (PowUp.powerUps[0])
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
 
-            pc.NoMesh();
-            pc.shootingExplosiveForm.enabled = true;
+                pc.NoMesh();
+                pc.shootingJumpForm.enabled = true;
 
-            Instantiate(explosiveBullet, this.transform.position, this.transform.rotation);
-            bool canSwitchForm = false;
-        } else if (PowUp.powerUps[0] && Input.GetMouseButton(0) && canShoot && pc.isDead == false)
-        {
-            canShoot = false;
-            timeUntilNextShot = Time.time + timeBetweenShot;
+                Instantiate(Bullet, this.transform.position, this.transform.rotation);
+                bool canSwitchForm = false;
+                Ammo--;
+            } 
+            else
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
 
-            pc.NoMesh();
-            pc.shootingJumpForm.enabled = true;
+                pc.NoMesh();
+                pc.shootingForm.enabled = true;
 
-            Instantiate(Bullet, this.transform.position, this.transform.rotation);
-            bool canSwitchForm = false;
+                Instantiate(Bullet, this.transform.position, this.transform.rotation);
+                bool canSwitchForm = false;
+                Ammo--;
+            }
         }
 
         if (Time.time > timeShootingForm)
