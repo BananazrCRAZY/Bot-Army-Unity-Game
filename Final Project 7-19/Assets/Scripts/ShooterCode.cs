@@ -13,12 +13,16 @@ public class ShooterCode : MonoBehaviour
     public PlayerController pc;
     public PowerupScript PowUp;
 
+    public GameObject player;
+
     // For default vs Shooting on platform
     float holdShooingForm = 0.1f;
     public float timeShootingForm;
     public bool canSwitchForm = true;
 
     public int Ammo = 5;
+
+    Vector3 rot;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +38,14 @@ public class ShooterCode : MonoBehaviour
         if (Time.time > timeUntilNextShot)
         {
             canShoot = true;
+        }
+
+        if (player.transform.rotation.y == 0)
+        {
+            rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 180, transform.rotation.eulerAngles.z);
+        } else
+        {
+            rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
         }
 
         if (pc.isDead == false && Input.GetMouseButton(0) && canShoot && Ammo > 0)
@@ -74,8 +86,7 @@ public class ShooterCode : MonoBehaviour
                 pc.NoMesh();
                 pc.shootingSpeedForm.enabled = true;
 
-                Instantiate(Bullet, this.transform.position, this.transform.rotation);
-                bool canSwitchForm = false;
+                CreateBullet();
                 Ammo--;
             }
             else if (PowUp.powerUps[3])
@@ -105,8 +116,7 @@ public class ShooterCode : MonoBehaviour
                 pc.NoMesh();
                 pc.shootingJumpForm.enabled = true;
 
-                Instantiate(Bullet, this.transform.position, this.transform.rotation);
-                bool canSwitchForm = false;
+                CreateBullet();
                 Ammo--;
             } 
             else
@@ -117,8 +127,7 @@ public class ShooterCode : MonoBehaviour
                 pc.NoMesh();
                 pc.shootingForm.enabled = true;
 
-                Instantiate(Bullet, this.transform.position, this.transform.rotation);
-                bool canSwitchForm = false;
+                CreateBullet();
                 Ammo--;
             }
         }
@@ -127,5 +136,12 @@ public class ShooterCode : MonoBehaviour
         {
             bool canSwitchForm = true;
         }
+    }
+
+    public void CreateBullet()
+    {
+        transform.rotation = Quaternion.Euler(rot);
+        Instantiate(Bullet, this.transform.position, this.transform.rotation);
+        bool canSwitchForm = false;
     }
 }

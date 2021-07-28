@@ -6,6 +6,7 @@ public class Camera : MonoBehaviour
 {
     public Transform player;
     public float addHeight = 2.1f;
+    public float shiftRight = 100f;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,6 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + addHeight, this.transform.position.z);
+        transform.position = new Vector3(player.transform.position.x + shiftRight, player.transform.position.y + addHeight, this.transform.position.z);
     }
 }
