@@ -7,6 +7,7 @@ public class TimePassed : MonoBehaviour
 {
     public float spawnTimer = 0f;
     public float countDownTimer;
+    public bool reset = false;
 
     public float countdownStartTime = 100f;
 
@@ -28,6 +29,13 @@ public class TimePassed : MonoBehaviour
         {
             return;
         }
+
+        if (reset)
+        {
+            countDownTimer = countdownStartTime;
+            reset = false;
+        }
+
         spawnTimer += Time.deltaTime;
         float roundedSpawnTimer = Mathf.Round(spawnTimer * 10) / 10;
        // timerText.text = "Time: " + roundedSpawnTimer;

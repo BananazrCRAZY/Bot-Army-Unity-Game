@@ -100,6 +100,11 @@ public class PlayerController : MonoBehaviour
                 transform.Translate(Vector3.down * speed * Time.deltaTime);
             }
 
+            if (Input.GetKey(KeyCode.W))
+            {
+                Vector3 one80 = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 180, transform.rotation.eulerAngles.z);
+            }
+
             if (Input.GetButtonDown("Jump"))
             {
                 if (jumpCounter < 2 || jumpCheats)

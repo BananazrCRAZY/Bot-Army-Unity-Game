@@ -26,6 +26,7 @@ public class FinishLvl : MonoBehaviour
         {
             player.transform.position = nextLvl.transform.position;
             tp.countdownStartTime = timeForLvl;
+            tp.reset = true;
         }
     }
 }
