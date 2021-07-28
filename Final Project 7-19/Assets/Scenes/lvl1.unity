@@ -20034,8 +20034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreCon: {fileID: 2126498384}
   timeCon: {fileID: 2126498385}
-  player: {fileID: 919132148808325474}
-  sp: {fileID: 3411319366136192004}
+  reload: 0
 --- !u!4 &2126498383
 Transform:
   m_ObjectHideFlags: 0
@@ -20665,6 +20664,10 @@ PrefabInstance:
       value: PointPortal
       objectReference: {fileID: 0}
     - target: {fileID: 76108793036350412, guid: 80d491e1bf255be40aeb75e1a33046cc, type: 3}
+      propertyPath: bf
+      value: 
+      objectReference: {fileID: 2126498382}
+    - target: {fileID: 76108793036350412, guid: 80d491e1bf255be40aeb75e1a33046cc, type: 3}
       propertyPath: pc
       value: 
       objectReference: {fileID: 7792264600393706048}
@@ -20718,17 +20721,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80d491e1bf255be40aeb75e1a33046cc, type: 3}
---- !u!114 &3411319366136192004 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 76108793036350412, guid: 80d491e1bf255be40aeb75e1a33046cc, type: 3}
-  m_PrefabInstance: {fileID: 3339723039821692872}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10d0c1ac588a14742a4004b7b6ec03f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3681500190387095160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21190,7 +21182,6 @@ MonoBehaviour:
   jumpExplosiveForm: {fileID: 322489422}
   shootingExplosiveForm: {fileID: 570487793}
   gos: {fileID: 161915194}
-  sp: {fileID: 76108793036350412, guid: 80d491e1bf255be40aeb75e1a33046cc, type: 3}
   shot: {fileID: 2022480987}
 --- !u!54 &7792264600393706054
 Rigidbody:

@@ -48,7 +48,8 @@ MonoBehaviour:
   pc: {fileID: 0}
   player: {fileID: 0}
   portalCol: {fileID: 76108793036350413}
-  newSpawn: 0
+  spawn: {x: 0, y: 0, z: 0}
+  bf: {fileID: 0}
 --- !u!65 &76108793036350413
 BoxCollider:
   m_ObjectHideFlags: 0

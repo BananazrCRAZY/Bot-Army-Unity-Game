@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     public MeshRenderer shootingExplosiveForm;
 
     public GameoverScreen gos;
-    public SpawnPoint sp;
+    //public SpawnPoint sp;
     public ShooterCode shot;
     // Start is called before the first frame update
     void Start()
@@ -143,12 +143,6 @@ public class PlayerController : MonoBehaviour
             {
                 invicible = false;
             }
-        }
-
-        if (sp.newSpawn)
-        {
-            transform.position = sp.transform.position;
-            sp.newSpawn = false;
         }
     }
 

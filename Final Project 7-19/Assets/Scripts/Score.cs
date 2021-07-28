@@ -8,17 +8,6 @@ public class Score : MonoBehaviour
     public int score = 0;
     public Text scoreText;
 
-    private void Awake()
-    {
-        if (GameObject.FindObjectsOfType<Score>().Length > 1)
-        {
-            Destroy(gameObject);
-        } else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {

@@ -7,14 +7,16 @@ public class ButtonFunctions : MonoBehaviour
 {
     public Score scoreCon;
     public TimePassed timeCon;
-   // public GameObject player;
+    //public GameObject player;
     //public SpawnPoint sp;
+    public bool reload = false;
 
     // Start is called before the first frame update
     void Start()
     {
         scoreCon = GameObject.FindObjectOfType<Score>();
         timeCon = GameObject.FindObjectOfType<TimePassed>();
+        //sp = GameObject.FindObjectOfType<SpawnPoint>();
     }
 
     // Update is called once per frame
@@ -29,10 +31,11 @@ public class ButtonFunctions : MonoBehaviour
         timeCon.spawnTimer = 0;
         timeCon.countDownTimer = timeCon.countdownStartTime;
 
-        //player.transform.position = new Vector3(sp.spawn.x, sp.spawn.y, sp.spawn.z);
-
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+
+        //player.transform.position = new Vector3(sp.spawn.x, sp.spawn.y, sp.spawn.z);
+        reload = true;
     }
 
     public void QuitGame()

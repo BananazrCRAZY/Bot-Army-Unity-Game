@@ -7,8 +7,8 @@ public class SpawnPoint : MonoBehaviour
     public PlayerController pc;
     public GameObject player;
     public BoxCollider portalCol;
-    public bool newSpawn = false;
-    //public Vector3 spawn;
+    public Vector3 spawn;
+    public ButtonFunctions bf;
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +25,20 @@ public class SpawnPoint : MonoBehaviour
         {
             transform.position = pc.transform.position;
         }*/
+
+        if (bf.reload)
+        {
+            player.transform.position = spawn;
+            bf.reload = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.Equals(player))
         {
-            //spawn = transform.position;
+            spawn = transform.position;
             portalCol.enabled = false;
-            newSpawn = true;
         }
     }
 }
