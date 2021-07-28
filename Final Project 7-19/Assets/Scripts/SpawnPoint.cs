@@ -7,7 +7,6 @@ public class SpawnPoint : MonoBehaviour
     public PlayerController pc;
     public GameObject player;
     public BoxCollider portalCol;
-    public Vector3 spawn;
     public ButtonFunctions bf;
 
     // Start is called before the first frame update
@@ -28,7 +27,7 @@ public class SpawnPoint : MonoBehaviour
 
         if (bf.reload)
         {
-            player.transform.position = spawn;
+            player.transform.position = bf.spawn;
             bf.reload = false;
         }
     }
@@ -37,7 +36,7 @@ public class SpawnPoint : MonoBehaviour
     {
         if (collision.gameObject.Equals(player))
         {
-            spawn = transform.position;
+            bf.spawn = transform.position;
             portalCol.enabled = false;
         }
     }
