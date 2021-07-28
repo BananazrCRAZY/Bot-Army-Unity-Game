@@ -390,7 +390,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &69336816
 GameObject:
@@ -3782,6 +3782,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8183916886992992342, guid: 36f652dcda5b2a14ab287bed8241b1a2, type: 3}
   m_PrefabInstance: {fileID: 392609977}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &402100136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 402100138}
+  - component: {fileID: 402100137}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &402100137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402100136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 583e1b0d7ef188545925ca46e1d7881b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPoint: {x: -4.3, y: -0.5, z: -1}
+  spawn: {x: 0, y: 0, z: 0}
+--- !u!4 &402100138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402100136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 168.94005, y: 2.4502416, z: 1.6294699}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &405121625
 GameObject:
   m_ObjectHideFlags: 0
@@ -4408,7 +4453,7 @@ RectTransform:
   - {fileID: 1330237135}
   - {fileID: 1758499225}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5786,7 +5831,7 @@ Transform:
   - {fileID: 2602130946467890873}
   - {fileID: 148438239}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &545113910
 GameObject:
@@ -7791,7 +7836,7 @@ Transform:
   - {fileID: 1624154048}
   - {fileID: 812623966}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &789083225
 GameObject:
@@ -17674,7 +17719,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &1846319338 stripped
 Transform:
@@ -19523,7 +19568,7 @@ Transform:
   - {fileID: 4958044}
   - {fileID: 1402116859}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2099253736
 GameObject:
@@ -20012,9 +20057,8 @@ GameObject:
   - component: {fileID: 2126498385}
   - component: {fileID: 2126498384}
   - component: {fileID: 2126498387}
-  - component: {fileID: 2126498386}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: ScoresNTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20035,8 +20079,6 @@ MonoBehaviour:
   scoreCon: {fileID: 2126498384}
   timeCon: {fileID: 2126498385}
   sp: {fileID: 3339723039821692873}
-  reload: 0
-  spawn: {x: 0, y: 0, z: 0}
 --- !u!4 &2126498383
 Transform:
   m_ObjectHideFlags: 0
@@ -20083,18 +20125,6 @@ MonoBehaviour:
   countdownStartTime: 100
   countDownText: {fileID: 1330237136}
   pc: {fileID: 7792264600393706048}
---- !u!114 &2126498386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2126498381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74d40b7750b2cef47bcbac1339463898, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2126498387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20383,7 +20413,7 @@ Transform:
   - {fileID: 2022480986}
   - {fileID: 1200733361}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &565727414508011353
 PrefabInstance:
@@ -20669,6 +20699,10 @@ PrefabInstance:
       propertyPath: bf
       value: 
       objectReference: {fileID: 2126498382}
+    - target: {fileID: 76108793036350412, guid: 80d491e1bf255be40aeb75e1a33046cc, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 402100137}
     - target: {fileID: 76108793036350412, guid: 80d491e1bf255be40aeb75e1a33046cc, type: 3}
       propertyPath: pc
       value: 
@@ -20996,7 +21030,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &6981360692298121025
 Camera:
@@ -21196,6 +21230,8 @@ MonoBehaviour:
   shootingExplosiveForm: {fileID: 570487793}
   gos: {fileID: 161915194}
   shot: {fileID: 2022480987}
+  bf: {fileID: 2126498382}
+  gm: {fileID: 402100137}
 --- !u!54 &7792264600393706054
 Rigidbody:
   m_ObjectHideFlags: 0

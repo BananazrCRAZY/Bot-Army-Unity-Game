@@ -7,12 +7,13 @@ public class SpawnPoint : MonoBehaviour
     public PlayerController pc;
     public GameObject player;
     public BoxCollider portalCol;
-    public ButtonFunctions bf;
+    public GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
         pc = GameObject.FindObjectOfType<PlayerController>();
+        gm = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,19 +25,13 @@ public class SpawnPoint : MonoBehaviour
         {
             transform.position = pc.transform.position;
         }*/
-
-        if (bf.reload)
-        {
-            player.transform.position = bf.spawn;
-            bf.reload = false;
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.Equals(player))
         {
-            bf.spawn = transform.position;
+            gm.spawn = transform.position;
             portalCol.enabled = false;
         }
     }

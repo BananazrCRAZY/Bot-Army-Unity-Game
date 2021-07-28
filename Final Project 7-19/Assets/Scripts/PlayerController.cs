@@ -40,12 +40,16 @@ public class PlayerController : MonoBehaviour
     public GameoverScreen gos;
     //public SpawnPoint sp;
     public ShooterCode shot;
+    public ButtonFunctions bf;
+    public GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         gos = GameObject.FindObjectOfType<GameoverScreen>();
-
+        bf = GameObject.FindObjectOfType<ButtonFunctions>();
+        gm = GameObject.FindObjectOfType<GameManager>();
+        transform.position = gm.spawn;
         LosePowerUp();
     }
 

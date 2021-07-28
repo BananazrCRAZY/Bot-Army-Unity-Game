@@ -8,8 +8,6 @@ public class ButtonFunctions : MonoBehaviour
     public Score scoreCon;
     public TimePassed timeCon;
     public SpawnPoint sp;
-    public bool reload = false;
-    public Vector3 spawn;
 
     // Start is called before the first frame update
     void Start()
@@ -33,8 +31,6 @@ public class ButtonFunctions : MonoBehaviour
 
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
-
-        reload = true;
     }
 
     public void QuitGame()
