@@ -222,10 +222,16 @@ public class PlayerController : MonoBehaviour
         }
 
         // Next LvL
-        if (collision.gameObject.CompareTag("Finish"))
+        /*if (collision.gameObject.CompareTag("Finish"))
         {
             Scene currentScene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(currentScene.buildIndex + 1);
+        }*/
+
+        if (collision.gameObject.CompareTag("Ammo"))
+        {
+            shot.Ammo += 5;
+            Destroy(collision.gameObject);
         }
     }
     void LosePowerUp()

@@ -7,6 +7,8 @@ TagManager:
   - Platform
   - Power Up
   - Enemy
+  - Ammo
+  - Portal
   layers:
   - Default
   - TransparentFX
