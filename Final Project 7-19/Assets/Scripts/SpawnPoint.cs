@@ -8,17 +8,8 @@ public class SpawnPoint : MonoBehaviour
     public GameObject player;
     public BoxCollider portalCol;
     public bool newSpawn = false;
-    private void Awake()
-    {
-        /*if (GameObject.FindObjectsOfType<SpawnPoint>().Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }*/
-    }
+    //public Vector3 spawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +31,7 @@ public class SpawnPoint : MonoBehaviour
     {
         if (collision.gameObject.Equals(player))
         {
+            //spawn = transform.position;
             portalCol.enabled = false;
             newSpawn = true;
         }

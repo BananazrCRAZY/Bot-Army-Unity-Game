@@ -7,6 +7,8 @@ public class ButtonFunctions : MonoBehaviour
 {
     public Score scoreCon;
     public TimePassed timeCon;
+   // public GameObject player;
+    //public SpawnPoint sp;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +28,8 @@ public class ButtonFunctions : MonoBehaviour
         scoreCon.score = 0;
         timeCon.spawnTimer = 0;
         timeCon.countDownTimer = timeCon.countdownStartTime;
+
+        //player.transform.position = new Vector3(sp.spawn.x, sp.spawn.y, sp.spawn.z);
 
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
