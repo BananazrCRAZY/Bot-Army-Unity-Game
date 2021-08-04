@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Ammo
   - Portal
+  - Virus
   layers:
   - Default
   - TransparentFX

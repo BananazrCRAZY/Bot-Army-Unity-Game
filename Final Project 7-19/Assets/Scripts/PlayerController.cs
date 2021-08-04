@@ -238,6 +238,11 @@ public class PlayerController : MonoBehaviour
             shot.Ammo += 5;
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Virus"))
+        {
+            Application.Quit();
+        }
     }
     void LosePowerUp()
     {
