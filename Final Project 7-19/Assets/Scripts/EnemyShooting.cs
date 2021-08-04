@@ -16,10 +16,12 @@ public class EnemyShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 bull = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+
         shotTime += Time.deltaTime;
         if (shotTime > timeUntilNextShot)
         {
-            Instantiate(enemyBullet, transform.position, transform.rotation);
+            Instantiate(enemyBullet, bull, transform.rotation);
             shotTime = 0;
         }
     }
