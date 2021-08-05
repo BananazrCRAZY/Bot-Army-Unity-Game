@@ -15,6 +15,8 @@ public class PowerupScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pc = GameObject.FindObjectOfType<PlayerController>();
+
         powerUps[0] = jumpBoost;
         powerUps[1] = multiShot;
         powerUps[2] = speed;

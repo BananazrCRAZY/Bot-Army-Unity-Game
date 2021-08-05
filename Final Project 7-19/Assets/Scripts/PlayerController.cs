@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     public ShooterCode shot;
     public ButtonFunctions bf;
     public GameManager gm;
+
+    public bool facingRight = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -89,20 +91,19 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.D))
             {
+                facingRight = true;
+                transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 180, transform.rotation.eulerAngles.z);
                 transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Translate(Vector3.right * speed * Time.deltaTime);
+                facingRight = false;
+                transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 0, transform.rotation.eulerAngles.z);
+                transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
             if (Input.GetKey(KeyCode.S))
             {
                 transform.Translate(Vector3.down * speed * Time.deltaTime);
-            }
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 180, transform.rotation.eulerAngles.z);
             }
 
             if (Input.GetButtonDown("Jump"))

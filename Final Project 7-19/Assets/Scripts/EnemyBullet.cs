@@ -30,7 +30,6 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Platform"))
         {
-            Debug.Log("wall");
             gameObject.SetActive(false);
         }
     }

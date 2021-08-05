@@ -26,6 +26,7 @@ public class ShooterCode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pc = GameObject.FindObjectOfType<PlayerController>();
         timeShootingForm = Time.time * holdShooingForm;
 
         //Transform eBullet = Instantiate(explosiveBullet) as Transform;
@@ -40,12 +41,12 @@ public class ShooterCode : MonoBehaviour
             canShoot = true;
         }
 
-        if (player.transform.rotation.y == 0)
-        {
-            rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 180, transform.rotation.eulerAngles.z);
-        } else
+        if (pc.facingRight)
         {
             rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        } else
+        {
+            rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 180, transform.rotation.eulerAngles.z);
         }
 
         if (pc.isDead == false && Input.GetMouseButton(0) && canShoot && Ammo > 0)
