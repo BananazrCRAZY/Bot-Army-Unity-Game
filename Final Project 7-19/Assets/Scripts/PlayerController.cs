@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void GameOver()
     {
         isDead = true;
         gameover.gameObject.SetActive(true);

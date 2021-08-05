@@ -8,10 +8,11 @@ public class FinishLvl : MonoBehaviour
     public Transform nextLvl;
     public TimePassed tp;
     public float timeForLvl = 100f;
+    public GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -25,6 +26,7 @@ public class FinishLvl : MonoBehaviour
         if (collision.gameObject.Equals(player))
         {
             player.transform.position = nextLvl.transform.position;
+            gm.timeStart = timeForLvl;
             tp.countdownStartTime = timeForLvl;
             tp.reset = true;
         }

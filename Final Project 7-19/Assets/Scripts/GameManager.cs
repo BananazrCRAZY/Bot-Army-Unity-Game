@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
 
     public Vector3 spawn;
 
+    [SerializeField]
+    private float time = 100f;
+
+    public float timeStart = 100f;
+
     private void Awake()
     {
         if (!created)
@@ -30,10 +35,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         checkPoint = spawn;
+        time = timeStart;
     }
 
     public void equ()
     {
+        timeStart = time;
         spawn = checkPoint;
     }
 }

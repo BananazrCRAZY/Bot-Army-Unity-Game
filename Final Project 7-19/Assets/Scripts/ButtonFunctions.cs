@@ -8,6 +8,7 @@ public class ButtonFunctions : MonoBehaviour
     public Score scoreCon;
     public TimePassed timeCon;
     public SpawnPoint sp;
+    public GameManager gm;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class ButtonFunctions : MonoBehaviour
         scoreCon = GameObject.FindObjectOfType<Score>();
         timeCon = GameObject.FindObjectOfType<TimePassed>();
         sp = GameObject.FindObjectOfType<SpawnPoint>();
+        gm = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame

@@ -14,12 +14,16 @@ public class TimePassed : MonoBehaviour
     //public Text timerText;
     public Text countDownText;
     public PlayerController pc;
+    public GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
-        countDownTimer = countdownStartTime;
         pc = GameObject.FindObjectOfType<PlayerController>();
+        gm = GameObject.FindObjectOfType<GameManager>();
+
+        countdownStartTime = gm.timeStart;
+        countDownTimer = countdownStartTime;
     }
 
     // Update is called once per frame
@@ -44,6 +48,7 @@ public class TimePassed : MonoBehaviour
         if(countDownTimer <= 0)
         {
             countDownText.text = "Time: " + 0.ToString();
+            pc.GameOver();
         }
         else
         {

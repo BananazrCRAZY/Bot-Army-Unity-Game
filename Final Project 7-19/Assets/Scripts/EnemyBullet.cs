@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     public float speed = 10f;
     public float lifeT = 3f;
+    public bool goingLeft = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,17 +16,14 @@ public class EnemyBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-        Destroy(gameObject, lifeT);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Platform"))
+        if (goingLeft)
         {
-            Debug.Log("wall");
-            Destroy(gameObject);
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+        } else
+        {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
+        Destroy(gameObject, lifeT);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,7 +31,7 @@ public class EnemyBullet : MonoBehaviour
         if (other.gameObject.CompareTag("Platform"))
         {
             Debug.Log("wall");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

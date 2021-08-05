@@ -20,11 +20,6 @@ public class SpawnPoint : MonoBehaviour
     void Update()
     {
         pc = GameObject.FindObjectOfType<PlayerController>();
-
-        /*if (Input.GetKey(KeyCode.F))
-        {
-            transform.position = pc.transform.position;
-        }*/
     }
 
     private void OnCollisionEnter(Collision collision)
