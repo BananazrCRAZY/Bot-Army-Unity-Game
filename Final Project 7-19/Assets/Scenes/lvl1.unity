@@ -7302,7 +7302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkPoint: {x: -4.3, y: -0.5, z: -1}
   spawn: {x: 0, y: 0, z: 0}
-  time: 1000
+  time: 100
   timeStart: 100
 --- !u!4 &402100138
 Transform:
@@ -43745,7 +43745,7 @@ PrefabInstance:
       objectReference: {fileID: 2602130946467890873}
     - target: {fileID: 4496508881354873914, guid: a509d742218968245bfce9fadbbe8f08, type: 3}
       propertyPath: timeForLvl
-      value: 240
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a509d742218968245bfce9fadbbe8f08, type: 3}
