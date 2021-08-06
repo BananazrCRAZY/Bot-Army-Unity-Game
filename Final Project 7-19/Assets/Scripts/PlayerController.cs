@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    //Start pos for player is x:-5 y:-0.65
+    //Comment out line 57 to test things
+
     public int speed = 7;
     Rigidbody rb;
     public float jumpForce = 5.2f;
@@ -38,7 +41,6 @@ public class PlayerController : MonoBehaviour
     public MeshRenderer shootingExplosiveForm;
 
     public GameoverScreen gos;
-    //public SpawnPoint sp;
     public ShooterCode shot;
     public ButtonFunctions bf;
     public GameManager gm;
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
         gos = GameObject.FindObjectOfType<GameoverScreen>();
         bf = GameObject.FindObjectOfType<ButtonFunctions>();
         gm = GameObject.FindObjectOfType<GameManager>();
-        transform.position = gm.spawn;
+        //transform.position = gm.spawn;
         LosePowerUp();
     }
 

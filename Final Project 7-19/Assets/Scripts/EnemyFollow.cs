@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyFollow : MonoBehaviour
 {
     public GameObject player;
-    public float speed = 4;
+    public float speed = 2f;
     public float radius = 15;
     // Start is called before the first frame update
     void Start()
