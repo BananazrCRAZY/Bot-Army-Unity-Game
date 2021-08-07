@@ -6,6 +6,9 @@ public class Teleport : MonoBehaviour
 {
     public GameObject player;
     public Transform nextLvl;
+    public BoxCollider col;
+    bool disPor = false;
+    float disPorTimer = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,18 @@ public class Teleport : MonoBehaviour
         if (collision.gameObject.Equals(player))
         {
             player.transform.position = nextLvl.transform.position;
+            disPor = true;
+        }
+
+        if (disPor)
+        {
+            col.enabled = false;
+            disPorTimer -= Time.deltaTime;
+            float invinCountdown = Mathf.Floor(disPorTimer);
+            if (disPorTimer <= 0)
+            {
+                disPor = false;
+            }
         }
     }
 }
