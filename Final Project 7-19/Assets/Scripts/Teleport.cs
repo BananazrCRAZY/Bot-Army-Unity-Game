@@ -35,6 +35,7 @@ public class Teleport : MonoBehaviour
             float invinCountdown = Mathf.Floor(disPorTimer);
             if (disPorTimer <= 0)
             {
+                col.enabled = true;
                 disPor = false;
             }
         }
