@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    //Start pos for player is x:-5 y:-0.65
+    //Start pos for player is x:-5 y:-0.65 z:0
     //Comment out line 57 to test things
 
     public int speed = 7;
