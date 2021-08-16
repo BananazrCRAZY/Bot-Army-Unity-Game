@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public MeshRenderer defaultExplosiveForm;
     public MeshRenderer jumpExplosiveForm;
     public MeshRenderer shootingExplosiveForm;
+    public MeshRenderer godForm;
 
     public GameoverScreen gos;
     public ShooterCode shot;
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
     public GameManager gm;
 
     public bool facingRight = true;
+    public bool god = false;
+    public int godLives = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +56,8 @@ public class PlayerController : MonoBehaviour
         gos = GameObject.FindObjectOfType<GameoverScreen>();
         bf = GameObject.FindObjectOfType<ButtonFunctions>();
         gm = GameObject.FindObjectOfType<GameManager>();
-        transform.position = gm.spawn;
+        // Comment out the line below to test things
+        //transform.position = gm.spawn;
         LosePowerUp();
     }
 
@@ -76,10 +80,18 @@ public class PlayerController : MonoBehaviour
         else if (PowUp.powerUps[3])
         {
             shot.timeBetweenShot = 0.34f;
+        } 
+        else if (god)
+        {
+            speed = 20;
+            jumpForce = 6f;
+            jumpCheats = true;
+            shot.timeBetweenShot = 0.07f;
         }
         else
         {
             jumpForce = 5.2f;
+            jumpCheats = false;
             speed = 7;
             shot.timeBetweenShot = 0.5f;
         }
@@ -172,6 +184,14 @@ public class PlayerController : MonoBehaviour
                 {
                     LosePowerUp();
                     invicible = true;
+                } else if (god) {
+                    godLives--;
+                    invicible = true;
+                    if (godLives <= 0)
+                    {
+                        LosePowerUp();
+                        godLives = 3;
+                    }
                 } else
                 {
                     GameOver();
@@ -212,6 +232,11 @@ public class PlayerController : MonoBehaviour
                     defaultExplosiveForm.enabled = true;
                     jumpCounter = 0;
                 }
+                else if (god)
+                {
+                    NoMesh();
+                    godForm.enabled = true;
+                }
                 else
                 {
                     NoMesh();
@@ -246,6 +271,11 @@ public class PlayerController : MonoBehaviour
         {
             Application.Quit();
         }
+        
+        if (collision.gameObject.CompareTag("Godpowerup"))
+        {
+            god = true;
+        }
     }
     void LosePowerUp()
     {
@@ -253,6 +283,7 @@ public class PlayerController : MonoBehaviour
         PowUp.powerUps[1] = false;
         PowUp.powerUps[2] = false;
         PowUp.powerUps[3] = false;
+        god = false;
 
         NoMesh();
         defaultForm.enabled = true;
@@ -275,5 +306,6 @@ public class PlayerController : MonoBehaviour
         defaultExplosiveForm.enabled = false;
         jumpExplosiveForm.enabled = false;
         shootingExplosiveForm.enabled = false;
+        godForm.enabled = false;
     }
 }
