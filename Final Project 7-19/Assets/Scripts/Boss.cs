@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
-    public GameObject bullet;
+    public GameObject followBullet;
     public GameObject bossBullet;
-    int bossHealth = 30;
+    int bossHealth = 100;
     public MeshRenderer shield;
     public MeshRenderer boss;
-    public Text health;
+    public Text healthText;
 
     public int speed = 13;
     bool facingForward = true;
@@ -26,7 +26,7 @@ public class Boss : MonoBehaviour
     void Update()
     {
         // Update health
-        health.text = "" + bossHealth + "";
+        healthText.text = "" + bossHealth + "";
 
         // Low health boost
         if (bossHealth <= 15)

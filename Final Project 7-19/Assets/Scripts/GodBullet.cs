@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GodBullet : MonoBehaviour
 {
-    public int speed = 25;
+    public int speed = 40;
     public Score scoreCon;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class GodBullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
-        Destroy(this.gameObject, 2f);
+        Destroy(this.gameObject, 1f);
     }
     private void OnTriggerEnter(Collider other)
     {

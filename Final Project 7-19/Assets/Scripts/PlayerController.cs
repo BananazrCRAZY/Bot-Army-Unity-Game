@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     //Start pos for player is x:-5 y:-0.65 z:0
     //Comment out line 57 to test things
 
-    public int speed = 7;
+    public int speed = 8;
     Rigidbody rb;
     public float jumpForce = 5.2f;
     public bool isDead = false;
@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     public bool facingRight = true;
     public bool god = false;
     public int godLives = 3;
+
+    public Text bossHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,33 +69,45 @@ public class PlayerController : MonoBehaviour
         if (PowUp.powerUps[0])
         {
             jumpForce = 8f;
+
+            speed = 8;
+            jumpCheats = false;
+            shot.timeBetweenShot = 0.5f;
         }
         else if (PowUp.powerUps[1])
         {
             shot.timeBetweenShot = 0.4f;
+
+            speed = 8;
+            jumpForce = 5.2f;
+            jumpCheats = false;
         }
         else if (PowUp.powerUps[2])
         {
             speed = 15;
-            shot.timeBetweenShot = 0.25f;
+            shot.timeBetweenShot = 0.3f;
+
+            jumpForce = 5.2f;
+            jumpCheats = false;
         } 
         else if (PowUp.powerUps[3])
         {
             shot.timeBetweenShot = 0.34f;
+
+            speed = 8;
+            jumpForce = 5.2f;
+            jumpCheats = false;
         } 
         else if (god)
         {
             speed = 20;
             jumpForce = 6f;
             jumpCheats = true;
-            shot.timeBetweenShot = 0.15f;
+            shot.timeBetweenShot = 0.2f;
         }
         else
         {
-            jumpForce = 5.2f;
-            jumpCheats = false;
-            speed = 7;
-            shot.timeBetweenShot = 0.5f;
+            ResetStats();
         }
 
         if (transform.position.y <= -91)
@@ -279,8 +293,16 @@ public class PlayerController : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Godpowerup"))
         {
+            LosePowerUp();
             god = true;
+            godLives = 3;
+            godForm.enabled = true;
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("BossLVL"))
+        {
+            bossHealth.gameObject.SetActive(true);
         }
     }
     void LosePowerUp()
@@ -313,5 +335,13 @@ public class PlayerController : MonoBehaviour
         jumpExplosiveForm.enabled = false;
         shootingExplosiveForm.enabled = false;
         godForm.enabled = false;
+    }
+
+    public void ResetStats()
+    {
+        speed = 8;
+        jumpForce = 5.2f;
+        jumpCheats = false;
+        shot.timeBetweenShot = 0.5f;
     }
 }

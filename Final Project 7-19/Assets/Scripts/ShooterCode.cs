@@ -51,7 +51,7 @@ public class ShooterCode : MonoBehaviour
             rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 180, transform.rotation.eulerAngles.z);
         }
 
-        if (pc.isDead == false && Input.GetMouseButton(0) && canShoot && Ammo > 0)
+        if (pc.isDead == false && Input.GetMouseButton(0) && canShoot && (Ammo > 0 || pc.god))
         {
             if (PowUp.powerUps[1])
             {
