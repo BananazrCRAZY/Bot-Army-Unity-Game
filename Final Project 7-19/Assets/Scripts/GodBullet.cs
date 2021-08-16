@@ -16,7 +16,7 @@ public class GodBullet : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
-        Destroy(this.gameObject, 3.0f);
+        Destroy(this.gameObject, 2f);
     }
     private void OnTriggerEnter(Collider other)
     {
