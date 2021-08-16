@@ -6,7 +6,7 @@ public class EnemyShooting : MonoBehaviour
 {
     float shotTime = 0f;
     public GameObject enemyBullet;
-    public float timeUntilNextShot = 1f;
+    public float timeUntilNextShot = 2.5f;
     // Start is called before the first frame update
     void Start()
     {
