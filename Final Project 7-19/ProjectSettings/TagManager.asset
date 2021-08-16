@@ -10,6 +10,7 @@ TagManager:
   - Ammo
   - Portal
   - Virus
+  - Godpowerup
   layers:
   - Default
   - TransparentFX

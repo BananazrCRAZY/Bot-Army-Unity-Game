@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour
             speed = 20;
             jumpForce = 6f;
             jumpCheats = true;
-            shot.timeBetweenShot = 0.07f;
+            shot.timeBetweenShot = 0.15f;
         }
         else
         {
@@ -140,6 +140,10 @@ public class PlayerController : MonoBehaviour
                     {
                         NoMesh();
                         jumpExplosiveForm.enabled = true;
+                    } else if (god)
+                    {
+                        NoMesh();
+                        godForm.enabled = true;
                     } else
                     {
                         NoMesh();
@@ -175,10 +179,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (invicible)
-            {
-                Debug.Log("Can't touch ME!");
-            } else
+            if (!invicible)
             {
                 if (PowUp.powerUps[0] == true || PowUp.powerUps[1] == true || PowUp.powerUps[2] == true || PowUp.powerUps[3] == true)
                 {
@@ -191,6 +192,7 @@ public class PlayerController : MonoBehaviour
                     {
                         LosePowerUp();
                         godLives = 3;
+                        jumpCounter = 0;
                     }
                 } else
                 {
@@ -249,9 +251,12 @@ public class PlayerController : MonoBehaviour
         // Power Up
         if (collision.gameObject.CompareTag("Power Up"))
         {
-            LosePowerUp();
-            PowUp.RandomPowerup();
-            Destroy(collision.gameObject);
+            if (!god)
+            {
+                LosePowerUp();
+                PowUp.RandomPowerup();
+                Destroy(collision.gameObject);
+            }
         }
 
         // Next LvL
@@ -275,6 +280,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Godpowerup"))
         {
             god = true;
+            Destroy(collision.gameObject);
         }
     }
     void LosePowerUp()

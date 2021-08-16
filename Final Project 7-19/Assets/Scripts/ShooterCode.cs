@@ -7,6 +7,7 @@ public class ShooterCode : MonoBehaviour
 {
     public GameObject Bullet;
     public GameObject explosiveBullet;
+    public GameObject godBullet;
     public bool canShoot;
     public float timeBetweenShot = 0.5f;
     private float timeUntilNextShot;
@@ -23,6 +24,7 @@ public class ShooterCode : MonoBehaviour
     public int Ammo = 5;
 
     Vector3 rot;
+    Vector3 currentPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +61,7 @@ public class ShooterCode : MonoBehaviour
                 pc.NoMesh();
                 pc.shootingMultiForm.enabled = true;
 
-                Vector3 currentPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+                currentPos = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
                 Instantiate(Bullet, currentPos, this.transform.rotation);
                 currentPos = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
                 Instantiate(Bullet, currentPos, this.transform.rotation);
@@ -119,7 +121,19 @@ public class ShooterCode : MonoBehaviour
 
                 CreateBullet();
                 Ammo--;
-            } 
+            } else if (pc.god)
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
+
+                pc.NoMesh();
+                pc.godForm.enabled = true;
+
+                currentPos = new Vector3(transform.position.x , transform.position.y - 2.5f, transform.position.z);
+                transform.rotation = Quaternion.Euler(rot);
+                Instantiate(godBullet, currentPos, this.transform.rotation);
+                bool canSwitchForm = false;
+            }
             else
             {
                 canShoot = false;
