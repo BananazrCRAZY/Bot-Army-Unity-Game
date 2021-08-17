@@ -47,10 +47,14 @@ public class PlayerController : MonoBehaviour
     public GameManager gm;
 
     public bool facingRight = true;
+
     public bool god = false;
     public int godLives = 5;
-
+    public Text lifeText;
+    public GameObject godLifeUI;
     public Text bossHealth;
+    public GameObject bossHeartUI;
+
     public bool canZoom = false;
     public float zoomOut = 30f;
     // Start is called before the first frame update
@@ -102,10 +106,11 @@ public class PlayerController : MonoBehaviour
         } 
         else if (god)
         {
-            speed = 20;
-            jumpForce = 6f;
+            speed = 30;
+            jumpForce = 9f;
             jumpCheats = true;
             shot.timeBetweenShot = 0.2f;
+            lifeText.text = " " + godLives + " ";
         }
         else
         {
@@ -195,26 +200,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (!invicible)
-            {
-                if (PowUp.powerUps[0] == true || PowUp.powerUps[1] == true || PowUp.powerUps[2] == true || PowUp.powerUps[3] == true)
-                {
-                    LosePowerUp();
-                    invicible = true;
-                } else if (god) {
-                    godLives--;
-                    invicible = true;
-                    if (godLives <= 0)
-                    {
-                        LosePowerUp();
-                        godLives = 3;
-                        jumpCounter = 0;
-                    }
-                } else
-                {
-                    GameOver();
-                }
-            }
+            damaged();
+        }
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            damaged();
         }
     }
 
@@ -296,15 +286,17 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Godpowerup"))
         {
             LosePowerUp();
+            NoMesh();
             god = true;
             godLives = 5;
             godForm.enabled = true;
+            GodUI(true);
             Destroy(collision.gameObject);
         }
 
         if (collision.gameObject.CompareTag("BossLVL"))
         {
-            bossHealth.gameObject.SetActive(true);
+            BossUI(true);
             canZoom = true;
         }
     }
@@ -315,6 +307,7 @@ public class PlayerController : MonoBehaviour
         PowUp.powerUps[2] = false;
         PowUp.powerUps[3] = false;
         god = false;
+        GodUI(false);
 
         NoMesh();
         defaultForm.enabled = true;
@@ -346,5 +339,44 @@ public class PlayerController : MonoBehaviour
         jumpForce = 5.2f;
         jumpCheats = false;
         shot.timeBetweenShot = 0.5f;
+        GodUI(false);
+    }
+
+    public void GodUI(bool tf)
+    {
+        lifeText.gameObject.SetActive(tf);
+        godLifeUI.gameObject.SetActive(tf);
+    }
+    public void BossUI(bool tf)
+    {
+        bossHealth.gameObject.SetActive(tf);
+        bossHeartUI.gameObject.SetActive(tf);
+    }
+
+    public void damaged()
+    {
+        if (!invicible)
+        {
+            if (PowUp.powerUps[0] == true || PowUp.powerUps[1] == true || PowUp.powerUps[2] == true || PowUp.powerUps[3] == true)
+            {
+                LosePowerUp();
+                invicible = true;
+            }
+            else if (god)
+            {
+                godLives--;
+                invicible = true;
+                if (godLives <= 0)
+                {
+                    LosePowerUp();
+                    godLives = 3;
+                    jumpCounter = 0;
+                }
+            }
+            else
+            {
+                GameOver();
+            }
+        }
     }
 }
