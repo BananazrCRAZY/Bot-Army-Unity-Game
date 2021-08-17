@@ -6,10 +6,12 @@ public class BulletCode : MonoBehaviour
 {
     public int speed = 15;
     public Score scoreCon;
+    public Boss boss;
     // Start is called before the first frame update
     void Start()    
     {
         scoreCon = GameObject.FindObjectOfType<Score>();
+        boss = GameObject.FindObjectOfType<Boss>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,11 @@ public class BulletCode : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Platform"))
         {
+            gameObject.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            boss.bossHealth--;
             gameObject.SetActive(false);
         }
     }

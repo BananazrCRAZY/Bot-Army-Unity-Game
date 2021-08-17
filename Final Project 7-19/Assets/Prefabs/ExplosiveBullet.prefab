@@ -149,6 +149,7 @@ MonoBehaviour:
   explosionCollider: {fileID: 22777827993306404}
   explosionParticles: {fileID: 7244492330233934460}
   explodeMesh: {fileID: 475698245}
+  boss: {fileID: 0}
 --- !u!65 &22777827993306405
 BoxCollider:
   m_ObjectHideFlags: 0

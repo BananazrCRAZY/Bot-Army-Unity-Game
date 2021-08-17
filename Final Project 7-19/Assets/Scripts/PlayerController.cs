@@ -48,9 +48,11 @@ public class PlayerController : MonoBehaviour
 
     public bool facingRight = true;
     public bool god = false;
-    public int godLives = 3;
+    public int godLives = 5;
 
     public Text bossHealth;
+    public bool canZoom = false;
+    public float zoomOut = 30f;
     // Start is called before the first frame update
     void Start()
     {
@@ -295,7 +297,7 @@ public class PlayerController : MonoBehaviour
         {
             LosePowerUp();
             god = true;
-            godLives = 3;
+            godLives = 5;
             godForm.enabled = true;
             Destroy(collision.gameObject);
         }
@@ -303,6 +305,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("BossLVL"))
         {
             bossHealth.gameObject.SetActive(true);
+            canZoom = true;
         }
     }
     void LosePowerUp()

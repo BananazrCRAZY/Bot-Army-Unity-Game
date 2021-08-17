@@ -12,6 +12,7 @@ TagManager:
   - Virus
   - Godpowerup
   - BossLVL
+  - Boss
   layers:
   - Default
   - TransparentFX

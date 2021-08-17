@@ -129,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   scoreCon: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!65 &-1089316014557983552
 BoxCollider:
   m_ObjectHideFlags: 0
