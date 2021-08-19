@@ -62,8 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3345652a64bed0f41910958b40214419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followBullet: {fileID: 0}
-  bossBullet: {fileID: 3160518540677743024, guid: f4332382aaf2a7d41addabf13af7b57f, type: 3}
   bossHealth: 100
   shield: {fileID: 7997000008647424922}
   threeShield: {fileID: 5501576918328391425}
@@ -71,9 +69,18 @@ MonoBehaviour:
   invertBoss: {fileID: 5257247495111873834}
   boss: {fileID: 2866625184220574855}
   healthText: {fileID: 0}
-  speed: 13
-  minPos: 1883
-  maxPos: 2055
+  speed: 7
+  minPos: 1882
+  maxPos: 2034
+  speedBullet: {fileID: 6360510511059240200, guid: 98afb2533478a0848b2d73b6cafe61c5, type: 3}
+  bossBullet: {fileID: 3160518540677743024, guid: f4332382aaf2a7d41addabf13af7b57f, type: 3}
+  bb: {fileID: 7258524848960531822, guid: f4332382aaf2a7d41addabf13af7b57f, type: 3}
+  speedbb: {fileID: 2916918917575984714, guid: 98afb2533478a0848b2d73b6cafe61c5, type: 3}
+  timeBetweenShot: 9
+  shootLow: 9
+  shootHigh: -6.3
+  lowHealth: 0
+  wall: {fileID: 0}
 --- !u!1 &4651363449924287074
 GameObject:
   m_ObjectHideFlags: 0

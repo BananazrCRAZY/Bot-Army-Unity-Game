@@ -23,10 +23,21 @@ public class Boss : MonoBehaviour
     public GameObject bossBullet;
     public BossBullet bb;
     public BossBullet speedbb;
+
+    bool canShoot = true;
+    Vector3 currentPos;
+    public float timeBetweenShot = 9;
+    private float timeUntilNextShot;
+    public float shootLow;
+    public float shootHigh;
+    public bool lowHealth = false;
+
+    public GameObject wall;
     // Start is called before the first frame update
     void Start()
     {
         bullet = bossBullet;
+        //bullet = speedBullet;
         threeShield.enabled = true;
     }
 
@@ -40,11 +51,13 @@ public class Boss : MonoBehaviour
         if (bossHealth <= 75 && bossHealth > 50)
         {
             speed = 10;
+            timeBetweenShot = 7.5f;
             NoMesh();
             twoShield.enabled = true;
         }
         else if (bossHealth <= 50 && bossHealth > 30)
         {
+            timeBetweenShot = 5f;
             speed = 15;
             NoMesh();
             shield.enabled = true;
@@ -52,13 +65,16 @@ public class Boss : MonoBehaviour
         else if (bossHealth <= 30 && bossHealth > 15)
         {
             bullet = speedBullet;
-            speed = 20;
+            timeBetweenShot = 1f;
+            speed = 23;
             NoMesh();
             boss.enabled = true;
         }
         else if (bossHealth <= 15 && bossHealth > 0)
         {
-            speed = 40;
+            lowHealth = true;
+            timeBetweenShot = 0.4f;
+            speed = 29;
             NoMesh();
             invertBoss.enabled = true;
         } 
@@ -66,6 +82,7 @@ public class Boss : MonoBehaviour
         {
             gameObject.SetActive(false);
             bossHealth = 0;
+            wall.SetActive(false);
         }
 
         // Movement
@@ -89,6 +106,37 @@ public class Boss : MonoBehaviour
             facingForward = false;
             bb.goingLeft = true;
             speedbb.goingLeft = true;
+        }
+
+        //Shooting
+        float shootRange = Random.Range(shootLow, shootHigh);
+
+        if (facingForward)
+        {
+            rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        }
+        else
+        {
+            rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 180, transform.rotation.eulerAngles.z);
+        }
+
+        if (canShoot)
+        {
+            canShoot = false;
+            timeUntilNextShot = Time.time + timeBetweenShot;
+
+            currentPos = new Vector3(transform.position.x - 1, transform.position.y + shootRange, transform.position.z);
+            Instantiate(bullet, currentPos, this.transform.rotation);
+            if (lowHealth)
+            {
+                currentPos = new Vector3(transform.position.x - 1, transform.position.y + shootRange, transform.position.z);
+                Instantiate(bullet, currentPos, this.transform.rotation);
+            }
+        }
+        // SHooting timer
+        if (Time.time > timeUntilNextShot)
+        {
+            canShoot = true;
         }
     }
 

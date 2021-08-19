@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         bf = GameObject.FindObjectOfType<ButtonFunctions>();
         gm = GameObject.FindObjectOfType<GameManager>();
         // Comment out the line below to test things
-        //transform.position = gm.spawn;
+        transform.position = gm.spawn;
         LosePowerUp();
     }
 

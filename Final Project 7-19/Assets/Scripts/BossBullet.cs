@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BossBullet : MonoBehaviour
 {
-    public float speed = 15f;
-    public float lifeT = 3f;
+    public float speed = 20f;
+    public float lifeT = 20f;
     public bool goingLeft = false;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class BossBullet : MonoBehaviour
     {
         if (goingLeft)
         {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
         else
         {

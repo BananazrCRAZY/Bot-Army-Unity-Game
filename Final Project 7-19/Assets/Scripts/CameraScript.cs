@@ -8,9 +8,9 @@ public class CameraScript : MonoBehaviour
     public Transform player;
     public float addHeight = 2.1f;
     public PlayerController pc;
-    public float zoomOut = 30f;
     Vector3 f;
-    float orthoSize = 6;
+    public float orthoSize = 6;
+    public float newOrtho = 25;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +21,9 @@ public class CameraScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Camera.main.orthographicSize = orthoSize;
         if (pc.canZoom)
         {
-            orthoSize = 19;
+            Camera.main.orthographicSize = newOrtho;
             pc.canZoom = false;
         } else
         {
