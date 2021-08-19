@@ -5,19 +5,19 @@ using UnityEngine.UI;
 
 public class AmmoScore : MonoBehaviour
 {
-    public ShooterCode shootC;
+    public PlayerController pc;
     public Text ammoText;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        pc = GameObject.FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ammoText.text = "Ammo: " + shootC.Ammo;
+        ammoText.text = "Ammo: " + pc.Ammo;
 
     }
 }

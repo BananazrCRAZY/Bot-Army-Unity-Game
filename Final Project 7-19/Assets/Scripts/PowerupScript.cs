@@ -11,7 +11,6 @@ public class PowerupScript : MonoBehaviour
     public bool[] powerUps = new bool[4];
 
     public PlayerController pc;
-    public ShooterCode shotC;
     // Start is called before the first frame update
     void Start()
     {

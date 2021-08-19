@@ -111,15 +111,6 @@ public class Boss : MonoBehaviour
         //Shooting
         float shootRange = Random.Range(shootLow, shootHigh);
 
-        if (facingForward)
-        {
-            rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
-        }
-        else
-        {
-            rot = new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + 180, transform.rotation.eulerAngles.z);
-        }
-
         if (canShoot)
         {
             canShoot = false;

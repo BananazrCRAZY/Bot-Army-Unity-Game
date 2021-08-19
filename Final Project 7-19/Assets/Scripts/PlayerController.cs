@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
     public MeshRenderer godForm;
 
     public GameoverScreen gos;
-    public ShooterCode shot;
     public ButtonFunctions bf;
     public GameManager gm;
 
@@ -56,7 +55,21 @@ public class PlayerController : MonoBehaviour
     public GameObject bossHeartUI;
 
     public bool canZoom = false;
-    public float zoomOut = 30f;
+
+    // Shooting vars
+    public GameObject Bullet;
+    public GameObject explosiveBullet;
+    public GameObject godBullet;
+    public bool canShoot = true;
+    public float timeBetweenShot = 0.5f;
+    private float timeUntilNextShot;
+    public int Ammo = 5;
+    Vector3 currentPos;
+    Vector3 newPos;
+
+    float holdShooingForm = 0.1f;
+    public float timeShootingForm;
+    public bool canSwitchForm = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -78,11 +91,11 @@ public class PlayerController : MonoBehaviour
 
             speed = 8;
             jumpCheats = false;
-            shot.timeBetweenShot = 0.5f;
+            timeBetweenShot = 0.5f;
         }
         else if (PowUp.powerUps[1])
         {
-            shot.timeBetweenShot = 0.4f;
+            timeBetweenShot = 0.4f;
 
             speed = 8;
             jumpForce = 5.2f;
@@ -91,14 +104,14 @@ public class PlayerController : MonoBehaviour
         else if (PowUp.powerUps[2])
         {
             speed = 15;
-            shot.timeBetweenShot = 0.3f;
+            timeBetweenShot = 0.3f;
 
             jumpForce = 5.2f;
             jumpCheats = false;
         } 
         else if (PowUp.powerUps[3])
         {
-            shot.timeBetweenShot = 0.34f;
+            timeBetweenShot = 0.34f;
 
             speed = 8;
             jumpForce = 5.2f;
@@ -109,7 +122,7 @@ public class PlayerController : MonoBehaviour
             speed = 30;
             jumpForce = 9f;
             jumpCheats = true;
-            shot.timeBetweenShot = 0.2f;
+            timeBetweenShot = 0.2f;
             lifeText.text = " " + godLives + " ";
         }
         else
@@ -188,6 +201,113 @@ public class PlayerController : MonoBehaviour
                 invicible = false;
             }
         }
+
+        // Shooting code
+        if (Time.time > timeUntilNextShot)
+        {
+            canShoot = true;
+        }
+
+        currentPos = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        if (isDead == false && Input.GetMouseButton(0) && canShoot && (Ammo > 0 || god))
+        {
+            if (PowUp.powerUps[1])
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
+
+                NoMesh();
+                shootingMultiForm.enabled = true;
+
+                newPos = new Vector3(transform.position.x, currentPos.y + 0.5f, transform.position.z);
+                Instantiate(Bullet, newPos, this.transform.rotation);
+                newPos = new Vector3(transform.position.x, currentPos.y - 0.5f, transform.position.z);
+                Instantiate(Bullet, newPos, this.transform.rotation);
+                newPos = new Vector3(transform.position.x, currentPos.y - 1f, transform.position.z);
+                Instantiate(Bullet, newPos, this.transform.rotation);
+                newPos = new Vector3(transform.position.x, currentPos.y + 1f, transform.position.z);
+                Instantiate(Bullet, newPos, this.transform.rotation);
+                CreateBullet();
+                bool canSwitchForm = false;
+                if (Ammo == 1)
+                {
+                    Ammo--;
+                }
+                else
+                {
+                    Ammo -= 2;
+                }
+            }
+            else if (PowUp.powerUps[2])
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
+
+                NoMesh();
+                shootingSpeedForm.enabled = true;
+
+                CreateBullet();
+                Ammo--;
+            }
+            else if (PowUp.powerUps[3])
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
+
+                NoMesh();
+                shootingExplosiveForm.enabled = true;
+
+                Instantiate(explosiveBullet, currentPos, this.transform.rotation);
+                bool canSwitchForm = false;
+                if (Ammo == 1)
+                {
+                    Ammo--;
+                }
+                else
+                {
+                    Ammo -= 2;
+                }
+            }
+            else if (PowUp.powerUps[0])
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
+
+                NoMesh();
+                shootingJumpForm.enabled = true;
+
+                CreateBullet();
+                Ammo--;
+            }
+            else if (god)
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
+
+                NoMesh();
+                godForm.enabled = true;
+
+                newPos = new Vector3(transform.position.x, currentPos.y - 2.5f, transform.position.z);
+                Instantiate(godBullet, newPos, this.transform.rotation);
+                bool canSwitchForm = false;
+            }
+            else
+            {
+                canShoot = false;
+                timeUntilNextShot = Time.time + timeBetweenShot;
+
+                NoMesh();
+                shootingForm.enabled = true;
+
+                CreateBullet();
+                Ammo--;
+            }
+        }
+
+        if (Time.time > timeShootingForm)
+        {
+            bool canSwitchForm = true;
+        }
     }
 
     public void GameOver()
@@ -214,7 +334,7 @@ public class PlayerController : MonoBehaviour
         // Double Jump
         if (collision.gameObject.CompareTag("Platform"))
         {
-            if (shot.canSwitchForm)
+            if (canSwitchForm)
             {
                 if (PowUp.powerUps[0])
                 {
@@ -274,7 +394,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Ammo"))
         {
-            shot.Ammo += 5;
+            Ammo += 5;
             Destroy(collision.gameObject);
         }
 
@@ -338,7 +458,7 @@ public class PlayerController : MonoBehaviour
         speed = 8;
         jumpForce = 5.2f;
         jumpCheats = false;
-        shot.timeBetweenShot = 0.5f;
+        timeBetweenShot = 0.5f;
         GodUI(false);
     }
 
@@ -378,5 +498,11 @@ public class PlayerController : MonoBehaviour
                 GameOver();
             }
         }
+    }
+
+    public void CreateBullet()
+    {
+        Instantiate(Bullet, currentPos, this.transform.rotation);
+        bool canSwitchForm = false;
     }
 }
