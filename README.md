@@ -1,6 +1,2 @@
 # HACK4V-7-19
-Final Project for Hack4V - week of 7/19
-
-PLZ dont change code 
-it take 2 long
-robo man when explosive jump have i color wrong
+download and play game: https://drive.google.com/file/d/1QTzW5-L68TA2gcP2H-yehQYJ0Y6Jtxyv/view?usp=sharing
