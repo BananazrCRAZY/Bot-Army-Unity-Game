@@ -1,2 +1,3 @@
-# HACK4V-7-19
+# Bot Army
 download and play game: https://drive.google.com/file/d/1QTzW5-L68TA2gcP2H-yehQYJ0Y6Jtxyv/view?usp=sharing
+continued from summer camp: iDtech HACK4V-7-19
